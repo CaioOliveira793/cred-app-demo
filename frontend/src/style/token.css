@@ -1,0 +1,79 @@
+:root {
+	--global-spacing-unit: 8px;
+	--global-padding-unit: var(--global-spacing-unit);
+	--global-margin-unit: var(--global-spacing-unit);
+	--global-border-radius-unit: 4px;
+
+	--global-breakpoint-xs: 0px;
+	--global-breakpoint-sm: 600px;
+	--global-breakpoint-md: 900px;
+	--global-breakpoint-lg: 1200px;
+	--global-breakpoint-xl: 1500px;
+
+	--global-layer-lv1: 100;
+	--global-layer-lv2: 200;
+	--global-layer-lv3: 300;
+	--global-layer-lv4: 400;
+	--global-layer-lv5: 500;
+	--global-layer-lv6: 600;
+
+	--global-font-family: Helvetica, Arial, sans-serif;
+	--global-font-weight-light: 300;
+	--global-font-weight-regular: 400;
+	--global-font-weight-medium: 500;
+	--global-font-weight-bold: 700;
+	--global-font-size: 1rem;
+
+	--global-shadow-lv1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+		0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+		0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv2: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+		0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+		0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv8: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+		0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+		0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv12: 0px 7px 8px -4px rgba(0, 0, 0, 0.2),
+		0px 12px 17px 2px rgba(0, 0, 0, 0.14),
+		0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv16: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+		0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+		0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv20: 0px 10px 13px -6px rgba(0, 0, 0, 0.2),
+		0px 20px 31px 3px rgba(0, 0, 0, 0.14),
+		0px 8px 38px 7px rgba(0, 0, 0, 0.12);
+	--global-shadow-lv24: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+		0px 24px 38px 3px rgba(0, 0, 0, 0.14);
+}
+
+:root, :root[color-scheme=light] {
+	--global-primary-color: #0A4D85;
+	--global-primary-emphasis-color: #40749f;
+	--global-secondary-color: #073052;
+	--global-success-color: #98CE00;
+	--global-info-color: #0288d1;
+	--global-warning-color: #ed6c02;
+	--global-error-color: #d32f2f;
+
+	--global-text-primary-color: #000000;
+	--global-text-secondary-color: #000000aa;
+	--global-text-disabled-color: #00000060;
+	--global-text-link-color: var(--global-primary-color);
+
+	--global-bg-color: #ffffff;
+	--global-bg-emphasis-color: #f0f2f4;
+	--global-bg-muted-color: #f8f9fb;
+	--global-bg-subtle-color: #c7c7cb;
+
+	--global-border-color: #0000001f;
+	--global-divider-color: var(--global-border-color);
+
+	--global-action-active-color: #0000008a;
+	--global-action-disable-color: #00000042;
+	--global-action-hover-color: #0000000a;
+	--global-action-bgdisable-color: #00000059;
+	--global-action-select-color: #00000014;
+}

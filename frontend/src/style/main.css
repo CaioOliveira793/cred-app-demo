@@ -1,0 +1,60 @@
+@import 'token.css';
+
+* {
+	box-sizing: border-box;
+}
+
+fieldset, ul, ol, h1, h2, h3, h4, h5, h6, p, button {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+ul, ol {
+	list-style: disc inside;
+}
+::marker {
+	margin-right: calc(var(--global-margin-unit) * 1);
+}
+
+a {
+	color: var(--global-text-link-color);
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover, a:link, a:visited, a:active {
+	text-decoration: none;
+}
+
+button {
+	background-color: transparent;
+}
+
+hr {
+	margin: 0;
+	border: 0 solid var(--global-divider-color);
+	border-bottom-width: thin;
+	border-right-width: thin;
+	align-self: stretch;
+	height: auto;
+	flex-shrink: 0;
+}
+
+svg {
+	width: 1em;
+	height: 1em;
+	font-size: inherit;
+}
+
+body {
+	color: var(--global-text-primary-color);
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--global-font-size);
+	height: 100vh;
+	background-color: var(--global-bg-color);
+}
+
+#app {
+	height: 100vh;
+}
