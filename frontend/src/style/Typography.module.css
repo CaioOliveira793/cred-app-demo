@@ -1,0 +1,203 @@
+.heading1 {
+	--heading1-font-size: calc(var(--global-font-size) * 6);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-light);
+	font-size: var(--heading1-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(-1.5 / var(--heading1-font-size));
+}
+
+.heading2 {
+	--heading2-font-size: calc(var(--global-font-size) * 3.75);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-light);
+	font-size: var(--heading2-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(-0.5 / var(--heading2-font-size));
+}
+
+.heading3 {
+	--heading3-font-size: calc(var(--global-font-size) * 3);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--heading3-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0 / var(--heading3-font-size));
+}
+
+.heading4 {
+	--heading4-font-size: calc(var(--global-font-size) * 2.125);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--heading4-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0.25 / var(--heading4-font-size));
+}
+
+.heading5 {
+	--heading5-font-size: calc(var(--global-font-size) * 1.5);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--heading5-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0 / var(--heading5-font-size));
+}
+
+.heading6 {
+	--heading6-font-size: calc(var(--global-font-size) * 1.25);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-medium);
+	font-size: var(--heading6-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0.15 / var(--heading6-font-size));
+}
+
+.subtitle1 {
+	--subtitle1-font-size: calc(var(--global-font-size) * 1);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--subtitle1-font-size);
+	line-height: calc(var(--global-line-height) * 1.15);
+	letter-spacing: calc(0.15 / var(--subtitle1-font-size));
+}
+
+.subtitle2 {
+	--subtitle2-font-size: calc(var(--global-font-size) * 0.875);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-medium);
+	font-size: var(--subtitle2-font-size);
+	line-height: calc(var(--global-line-height) * 1.15);
+	letter-spacing: calc(0.1 / var(--subtitle2-font-size));
+}
+
+.body1 {
+	--body1-font-size: calc(var(--global-font-size) * 1);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--body1-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(0.15 / var(--body1-font-size));
+}
+
+.body2 {
+	--body2-font-size: calc(var(--global-font-size) * 0.875);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--body2-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(0.15 / var(--body2-font-size));
+}
+
+.button_small {
+	--button-font-size: calc(var(--global-font-size) * 0.75);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-medium);
+	font-size: var(--button-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0.4 / var(--button-font-size));
+	text-transform: uppercase;
+}
+
+.button_medium {
+	--button-font-size: calc(var(--global-font-size) * 0.875);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-medium);
+	font-size: var(--button-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0.4 / var(--button-font-size));
+	text-transform: uppercase;
+}
+
+.button_large {
+	--button-font-size: calc(var(--global-font-size) * 1);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-medium);
+	font-size: var(--button-font-size);
+	line-height: calc(var(--global-line-height) * 1.2);
+	letter-spacing: calc(0.4 / var(--button-font-size));
+	text-transform: uppercase;
+}
+
+.caption, .tag_small {
+	--caption-font-size: calc(var(--global-font-size) * 0.75);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--caption-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(0.4 / var(--caption-font-size));
+}
+
+.tag_medium {
+	--tag-medium-font-size: calc(var(--global-font-size) * 0.875);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--tag-medium-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(0.4 / var(--tag-medium-font-size));
+}
+
+.tag_large {
+	--tag-medium-font-size: calc(var(--global-font-size) * 1);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--tag-medium-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(0.4 / var(--tag-medium-font-size));
+}
+
+.overline {
+	--overline-font-size: calc(var(--global-font-size) * 0.75);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--overline-font-size);
+	line-height: calc(var(--global-line-height) * 1.1);
+	letter-spacing: calc(1 / var(--overline-font-size));
+	text-transform: uppercase;
+}
+
+.input_small {
+	--input-font-size: calc(var(--global-font-size) * 0.75);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--input-font-size);
+	line-height: calc(var(--global-line-height) * 1.05);
+	letter-spacing: calc(0.15 / var(--body2-font-size));
+}
+
+.input_medium {
+	--input-font-size: calc(var(--global-font-size) * 0.875);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--input-font-size);
+	line-height: calc(var(--global-line-height) * 1.05);
+	letter-spacing: calc(0.15 / var(--body2-font-size));
+}
+
+.input_large {
+	--input-font-size: calc(var(--global-font-size) * 1);
+
+	font-family: var(--global-font-family);
+	font-weight: var(--global-font-weight-regular);
+	font-size: var(--input-font-size);
+	line-height: calc(var(--global-line-height) * 1.05);
+	letter-spacing: calc(0.15 / var(--body2-font-size));
+}

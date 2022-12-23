@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import CediIcon from '~icons/fa6-solid/cedi-sign';
 
-interface AppLogoProps {
-	landscape?: boolean;
-}
-
-const props = defineProps<AppLogoProps>();
+defineProps<{ landscape?: boolean }>();
 </script>
 
 <template>
-	<div class="landscape_logo">
-		<CediIcon class="app_logo" />
-		<strong v-if="props.landscape">CredApp Demo</strong>
+	<div :class="$style.landscape_logo">
+		<CediIcon :class="$style.app_logo" />
+		<strong v-if="landscape" :class="$style.logo_text">CredApp Demo</strong>
 	</div>
 </template>
 
-<style scoped>
+<style module>
 .landscape_logo {
 	display: flex;
 	flex-direction: row;
@@ -33,5 +29,13 @@ const props = defineProps<AppLogoProps>();
 	padding: calc(var(--global-padding-unit) * 1);
 	background-color: var(--global-bg-color);
 	border-radius: calc(var(--global-border-radius-unit) * 2);
+}
+
+strong.logo_text {
+	font-weight: var(--global-font-weight-bold);
+}
+
+.logo_text {
+	composes: subtitle2 from '@/style/Typography.module.css';
 }
 </style>

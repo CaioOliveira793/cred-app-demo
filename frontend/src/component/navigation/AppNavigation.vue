@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, h } from 'vue';
 import NavigationItem from '@/component/navigation/NavigationItem.vue';
-import AppLogo from '../AppLogo.vue';
-import UserProfileLandscape from '../user/UserProfileLandscape.vue';
+import AppLogo from '@/component/AppLogo.vue';
+import UserProfileLandscape from '@/component/user/UserProfileLandscape.vue';
+import VButton from '@/component/form/VButton.vue';
 
 import ArrowLeftIcon from '~icons/fa6-solid/arrow-left';
 import ArrowRightIcon from '~icons/fa6-solid/arrow-right';
@@ -14,10 +15,6 @@ import GearIcon from '~icons/fa6-solid/gear';
 
 const expanded = ref(false);
 
-function toggleExpanded() {
-	expanded.value = !expanded.value;
-}
-
 const user = {
 	name: 'Victoria Alexandrova',
 	email: 'vic@gmail.com',
@@ -27,16 +24,29 @@ const user = {
 </script>
 
 <template>
-	<aside class="app_side_bar" :class="{ expanded_side_bar: expanded }">
-		<div class="app_nav_header">
-			<AppLogo :landscape="expanded" class="logo" />
-			<ArrowLeftIcon v-if="expanded" @click="toggleExpanded" class="expanded_button" />
-			<ArrowRightIcon v-if="!expanded" @click="toggleExpanded" />
+	<aside :class="{ [$style.expanded_side_bar]: expanded, [$style.app_side_bar]: true }">
+		<div :class="$style.app_nav_header">
+			<AppLogo :landscape="expanded" :class="$style.logo" />
+			<VButton
+				variant="icon_flat"
+				size="small"
+				:class="{ [$style.expanded_button]: expanded }"
+				@click="expanded = !expanded"
+			>
+				<ArrowLeftIcon v-if="expanded" />
+				<ArrowRightIcon v-if="!expanded" />
+			</VButton>
 		</div>
 		<hr />
-		<nav class="app_navigation" :class="{ expanded_navigation: expanded }">
+		<nav :class="{ [$style.expanded_navigation]: expanded, [$style.app_navigation]: true }">
 			<ul>
-				<NavigationItem name="Home" :expanded="expanded" ItemComponent="a">
+				<NavigationItem
+					name="Home"
+					:expanded="expanded"
+					:ItemComponent="
+						(props, { slots }) => h('a', { ...props, href: 'some' }, slots.default?.())
+					"
+				>
 					<template #icon>
 						<HouseIcon />
 					</template>
@@ -70,13 +80,13 @@ const user = {
 	</aside>
 </template>
 
-<style scoped>
+<style module>
 .app_side_bar {
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
-	padding: calc(var(--global-padding-unit) * 3) calc(var(--global-padding-unit) * 2);
+	padding: calc(var(--global-padding-unit) * 2);
 	gap: calc(var(--global-spacing-unit) * 2);
 	background-color: var(--global-bg-emphasis-color);
 }
@@ -109,6 +119,8 @@ const user = {
 	justify-content: space-between;
 	align-items: flex-start;
 	height: 100%;
+
+	composes: body1 from '@/style/Typography.module.css';
 }
 
 .expanded_navigation,

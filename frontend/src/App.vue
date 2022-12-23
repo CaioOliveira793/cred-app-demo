@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import 'normalize.css';
 import '@/style/main.css';
 
 import AppLayout from '@/component/AppLayout.vue';
@@ -7,12 +6,12 @@ import AppLayout from '@/component/AppLayout.vue';
 
 <template>
 	<AppLayout>
-		<div class="today_metric">
+		<div :class="$style.today_metric">
 			<h2>Métricas de hoje</h2>
 			<section>
-				<div class="card_metric_container">
-					<h6 class="card_metric_title">Atendimentos</h6>
-					<ul class="card_metric_list">
+				<div :class="$style.card_metric_container">
+					<h6 :class="$style.card_metric_title">Atendimentos</h6>
+					<ul :class="$style.card_metric_list">
 						<li>Sem interesse</li>
 						<li>Com interesse</li>
 						<li>Simulação iniciada</li>
@@ -24,7 +23,7 @@ import AppLayout from '@/component/AppLayout.vue';
 	</AppLayout>
 </template>
 
-<style scoped>
+<style module>
 .today_metric {
 	display: flex;
 	flex-flow: column nowrap;

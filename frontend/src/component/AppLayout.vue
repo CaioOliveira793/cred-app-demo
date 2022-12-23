@@ -3,16 +3,17 @@ import AppNavigation from '@/component/navigation/AppNavigation.vue';
 </script>
 
 <template>
-	<div class="middle_container">
+	<div :class="$style.middle_container">
 		<AppNavigation />
 
-		<main class="app_content">
+		<!-- TODO: add breadcrumb -->
+		<main :class="$style.app_content">
 			<slot />
 		</main>
 	</div>
 </template>
 
-<style scoped>
+<style module>
 .middle_container {
 	display: flex;
 	flex-flow: row nowrap;

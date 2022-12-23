@@ -1,0 +1,293 @@
+/* Button component */
+
+.button {
+	--button-color: initial;
+	--button-bg-color: initial;
+	--button-border-color: initial;
+	--button-shadow: initial;
+	--button-padding: initial;
+	--button-gap: initial;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+	vertical-align: middle;
+	text-transform: uppercase;
+	gap: var(--button-gap);
+	padding: var(--button-padding);
+	border-radius: var(--global-border-radius-unit);
+	color: var(--button-color);
+	border: 1px solid var(--button-border-color);
+	background-color: var(--button-bg-color);
+	box-shadow: var(--button-shadow);
+	transition: all .2s ease-in-out;
+}
+
+.button svg {
+	fill: currentcolor;
+}
+
+.outlined, .text, .contained, .icon_outlined, .icon_contained, .icon_flat {
+	composes: button;
+}
+
+.outlined, .icon_outlined {
+	--button-color: var(--global-primary-color);
+	--button-bg-color: transparent;
+	/* --button-border-color: color-mix(in srgb, var(--button-color), transparent x%) */
+	--button-border-color: #0A4D8580;
+}
+
+.contained, .icon_contained {
+	--button-color: var(--global-bg-color);
+	--button-bg-color: var(--global-primary-color);
+	--button-border-color: var(--button-bg-color);
+}
+
+.contained {
+	--button-shadow: var(--global-shadow-lv2);
+}
+
+.text, .icon_flat {
+	--button-bg-color: transparent;
+	--button-border-color: transparent;
+}
+
+.icon_outlined, .icon_contained, .icon_flat {
+	--button-shadow: 0;
+	width: fit-content;
+}
+
+
+/* [s-color] */
+.outlined[s-color="error"], .icon_outlined[s-color="error"] {
+	--button-border-color: #d32f2f80;
+	--button-color: var(--global-error-color);
+}
+
+.contained[s-color="error"], .icon_contained[s-color="error"] {
+	--button-bg-color: var(--global-error-color);
+}
+
+.text[s-color="error"], .icon_flat[s-color="error"] {
+	--button-color: var(--global-error-color);
+}
+
+
+/* :hover */
+.outlined:hover, .icon_outlined:hover {
+	--button-border-color: var(--button-color);
+	--button-bg-color: var(--global-action-hover-color);
+}
+
+.icon_flat:hover {
+	--button-bg-color: var(--global-action-hover-color);
+}
+
+.contained:hover {
+	--button-shadow: var(--global-shadow-lv4);
+}
+
+.contained:hover,
+.icon_contained:hover
+.contained:hover[s-color="primary"],
+.icon_contained:hover[s-color="primary"] {
+	--button-bg-color: #0a4e85da;
+}
+
+.contained:hover[s-color="error"],
+.icon_contained:hover[s-color="error"] {
+	--button-bg-color: #d32f2fda;
+}
+
+
+/* :active */
+.outlined:active,
+.icon_outlined:active,
+.icon_flat:active {
+	--button-bg-color: #0A4D854b;
+}
+
+.outlined:active[s-color="error"],
+.icon_outlined:active[s-color="error"],
+.icon_flat:active[s-color="error"] {
+	--button-bg-color: #d32f2f4b;
+}
+
+.contained:active, .icon_contained:active {
+	--button-bg-color: #0a4e85c6;
+}
+
+.contained:active[s-color="error"], .icon_contained:active[s-color="error"] {
+	--button-bg-color: #d32f2fc6;
+}
+
+
+/* :disabled */
+.button:disabled,
+.button[s-disabled] {
+	cursor: default;
+	pointer-events: none;
+}
+
+.outlined:disabled,
+.outlined[s-disabled],
+.icon_outlined:disabled,
+.icon_outlined[s-disabled] {
+	--button-color: var(--global-action-disable-color);
+	--button-border-color: var(--global-divider-color);
+}
+
+.contained:disabled,
+.contained[s-disabled],
+.icon_contained:disabled,
+.icon_contained[s-disabled] {
+	--button-color: var(--global-action-disable-color);
+	--button-bg-color: #d0d0d0;
+	--button-shadow: 0;
+}
+
+.text:disabled,
+.text[s-disabled],
+.icon_flat:disabled,
+.icon_flat[s-disabled] {
+	--button-color: var(--global-action-disable-color);
+}
+
+
+/* .size */
+.none {
+	--button-padding: 0;
+}
+
+.small {
+	composes: button_small from '@/style/Typography.module.css';
+}
+
+.medium {
+	composes: button_medium from '@/style/Typography.module.css';
+}
+
+.large {
+	composes: button_large from '@/style/Typography.module.css';
+}
+
+.none
+.icon_outlined.none,
+.icon_contained.none,
+.icon_flat.none {
+	--button-padding: 0;
+	--button-gap: 0;
+}
+
+.small,
+.icon_outlined.small,
+.icon_contained.small,
+.icon_flat.small {
+	--button-padding: calc(var(--global-padding-unit) * 0.8) calc(var(--global-padding-unit) * 0.8);
+	--button-gap: 0;
+}
+
+.medium,
+.icon_outlined.medium,
+.icon_contained.medium,
+.icon_flat.medium,
+.icon_outlined,
+.icon_contained,
+.icon_flat {
+	--button-padding: calc(var(--global-padding-unit) * 1) calc(var(--global-padding-unit) * 1);
+	--button-gap: 0;
+}
+
+.large,
+.icon_outlined.large,
+.icon_contained.large,
+.icon_flat.large {
+	--button-padding: calc(var(--global-padding-unit) * 1.2) calc(var(--global-padding-unit) * 1.2);
+	--button-gap: 0;
+}
+
+
+.none,
+.outlined.none,
+.text.none,
+.contained.none {
+	--button-padding: 0;
+	--button-gap: calc(var(--global-spacing-unit) * .5);
+}
+
+.small,
+.outlined.small,
+.text.small,
+.contained.small {
+	--button-padding: calc(var(--global-padding-unit) * .2) calc(var(--global-padding-unit) * .8);
+	--button-gap: calc(var(--global-spacing-unit) * .5);
+}
+
+.medium,
+.outlined.medium,
+.text.medium,
+.contained.medium,
+.outlined,
+.text,
+.contained {
+	--button-padding: calc(var(--global-padding-unit) * 0.4) calc(var(--global-padding-unit) * 1.2);
+	--button-gap: calc(var(--global-spacing-unit) * 1);
+}
+
+.large,
+.outlined.large,
+.text.large,
+.contained.large {
+	--button-padding: calc(var(--global-padding-unit) * 0.8) calc(var(--global-padding-unit) * 1.4);
+	--button-gap: calc(var(--global-spacing-unit) * 1.5);
+}
+
+
+/* ButtonGroup component */
+
+.button_group {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.button_group,
+.horizontal_orientation {
+	flex-direction: row;
+}
+
+.vertical_orientation {
+	flex-direction: column;
+}
+
+
+.button_group.horizontal_orientation .button:first-of-type {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.button_group.horizontal_orientation .button:not(:first-of-type, :last-of-type) {
+	border-radius: 0;
+}
+
+.button_group.horizontal_orientation .button:last-of-type {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+
+.button_group.vertical_orientation .button:first-of-type {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.button_group.vertical_orientation .button:not(:first-of-type, :last-of-type) {
+	border-radius: 0;
+}
+
+.button_group.vertical_orientation .button:last-of-type {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}

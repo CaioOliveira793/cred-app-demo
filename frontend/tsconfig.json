@@ -19,6 +19,7 @@
       "./node_modules/@types",
       "./src/@types"
     ],
+    "jsx": "preserve",
     "alwaysStrict": true,
     "strict": true,
     "strictNullChecks": true,

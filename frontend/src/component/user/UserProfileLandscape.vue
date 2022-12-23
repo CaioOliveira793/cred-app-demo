@@ -14,16 +14,16 @@ defineProps<UserProfileProps>();
 </script>
 
 <template>
-	<div class="user_profile" :class="{ expanded_user_profile: expanded }">
-		<img class="user_image" :src="user.image_url" alt="user_image" />
-		<div class="user_profile_info" v-show="expanded">
-			<strong style="font-size: 12px">{{ user.name }}</strong>
-			<a :href="'mailto:' + user.email" style="font-size: 12px">{{ user.email }}</a>
+	<div :class="{ [$style.user_profile]: true, [$style.expanded_user_profile]: expanded }">
+		<img :class="$style.user_image" :src="user.image_url" alt="user_image" />
+		<div :class="$style.user_profile_info" v-show="expanded">
+			<strong :class="$style.user_name">{{ user.name }}</strong>
+			<a :href="'mailto:' + user.email" :class="$style.user_email">{{ user.email }}</a>
 		</div>
 	</div>
 </template>
 
-<style scoped>
+<style module>
 .user_profile {
 	display: flex;
 	flex-flow: row nowrap;
@@ -50,5 +50,13 @@ defineProps<UserProfileProps>();
 	object-fit: cover;
 	border-radius: 999999px;
 	aspect-ratio: 1 / 1;
+}
+
+.user_name {
+	composes: body1 from '@/style/Typography.module.css';
+}
+
+.user_email {
+	composes: body2 from '@/style/Typography.module.css';
 }
 </style>

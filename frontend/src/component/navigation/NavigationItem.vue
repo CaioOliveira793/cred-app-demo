@@ -11,10 +11,9 @@ defineProps<{
 </script>
 
 <template>
-	<li class="menu_item" role="menuitem">
+	<li :class="$style.menu_item" role="menuitem">
 		<component
-			class="navigation_item"
-			:class="{ selected_navigation_item: selected }"
+			:class="{ [$style.navigation_item]: true, [$style.selected_navigation_item]: selected }"
 			:is="ItemComponent"
 		>
 			<slot name="icon">
@@ -25,7 +24,7 @@ defineProps<{
 	</li>
 </template>
 
-<style scoped>
+<style module>
 .menu_item {
 	display: flex;
 }
