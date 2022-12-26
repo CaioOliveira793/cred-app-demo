@@ -19,7 +19,7 @@ ul, ol {
 }
 
 a {
-	color: var(--global-text-link-color);
+	color: var(--text-link-color);
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -33,7 +33,7 @@ button {
 
 hr {
 	margin: 0;
-	border: 0 solid var(--global-divider-color);
+	border: 0 solid var(--divider-color);
 	border-bottom-width: thin;
 	border-right-width: thin;
 	align-self: stretch;
@@ -48,12 +48,12 @@ svg {
 }
 
 body {
-	color: var(--global-text-primary-color);
+	color: var(--text-color-1);
 	font-family: var(--global-font-family);
 	font-weight: var(--global-font-weight-regular);
 	font-size: var(--global-font-size);
 	height: 100vh;
-	background-color: var(--global-bg-color);
+	background-color: var(--surface-color-4);
 }
 
 #app {

@@ -27,7 +27,7 @@ defineProps<{ landscape?: boolean }>();
 	justify-content: center;
 	align-items: center;
 	padding: calc(var(--global-padding-unit) * 1);
-	background-color: var(--global-bg-color);
+	background-color: var(--surface-color-1);
 	border-radius: calc(var(--global-border-radius-unit) * 2);
 }
 

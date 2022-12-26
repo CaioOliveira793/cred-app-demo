@@ -88,7 +88,7 @@ const user = {
 	align-items: center;
 	padding: calc(var(--global-padding-unit) * 2);
 	gap: calc(var(--global-spacing-unit) * 2);
-	background-color: var(--global-bg-emphasis-color);
+	background-color: var(--surface-color-2);
 }
 
 .expanded_side_bar {

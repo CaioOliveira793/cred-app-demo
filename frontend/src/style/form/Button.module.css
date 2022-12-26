@@ -34,20 +34,20 @@
 }
 
 .outlined, .icon_outlined {
-	--button-color: var(--global-primary-color);
+	--button-color: var(--brand-color-original);
 	--button-bg-color: transparent;
 	/* --button-border-color: color-mix(in srgb, var(--button-color), transparent x%) */
 	--button-border-color: #0A4D8580;
 }
 
 .contained, .icon_contained {
-	--button-color: var(--global-bg-color);
-	--button-bg-color: var(--global-primary-color);
+	--button-color: var(--surface-color-1);
+	--button-bg-color: var(--brand-color-original);
 	--button-border-color: var(--button-bg-color);
 }
 
 .contained {
-	--button-shadow: var(--global-shadow-lv2);
+	--button-shadow: var(--global-shadow-2);
 }
 
 .text, .icon_flat {
@@ -64,15 +64,15 @@
 /* [s-color] */
 .outlined[s-color="error"], .icon_outlined[s-color="error"] {
 	--button-border-color: #d32f2f80;
-	--button-color: var(--global-error-color);
+	--button-color: var(--failure-color);
 }
 
 .contained[s-color="error"], .icon_contained[s-color="error"] {
-	--button-bg-color: var(--global-error-color);
+	--button-bg-color: var(--failure-color);
 }
 
 .text[s-color="error"], .icon_flat[s-color="error"] {
-	--button-color: var(--global-error-color);
+	--button-color: var(--failure-color);
 }
 
 
@@ -87,7 +87,7 @@
 }
 
 .contained:hover {
-	--button-shadow: var(--global-shadow-lv4);
+	--button-shadow: var(--global-shadow-4);
 }
 
 .contained:hover,
@@ -137,7 +137,7 @@
 .icon_outlined:disabled,
 .icon_outlined[s-disabled] {
 	--button-color: var(--global-action-disable-color);
-	--button-border-color: var(--global-divider-color);
+	--button-border-color: var(--divider-color);
 }
 
 .contained:disabled,

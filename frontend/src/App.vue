@@ -39,17 +39,17 @@ import AppLayout from '@/component/AppLayout.vue';
 	min-width: 220px;
 	padding: calc(var(--global-padding-unit) * 2);
 	border-radius: var(--global-border-radius-unit);
-
-	background-color: var(--global-bg-emphasis-color);
+	color: var(--text-color-2);
+	background-color: var(--surface-color-2);
 }
 
 .card_metric_title {
-	font-size: 14px;
-	color: var(--global-text-primary-color);
+	font-weight: var(--global-font-weight-bold);
+	composes: subtitle2 from '@/style/Typography.module.css';
 }
 
 .card_metric_list {
-	font-size: 14px;
+	composes: body2 from '@/style/Typography.module.css';
 	color: var(--global-text-secondary-color);
 }
 </style>

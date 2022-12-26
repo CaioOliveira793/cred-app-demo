@@ -36,7 +36,7 @@ defineProps<UserProfileProps>();
 
 .expanded_user_profile {
 	padding: calc(var(--global-padding-unit) * 1) calc(var(--global-padding-unit) * 1);
-	background-color: var(--global-bg-muted-color);
+	background-color: var(--surface-color-3);
 }
 
 .user_profile_info {

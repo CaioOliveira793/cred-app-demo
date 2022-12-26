@@ -15,6 +15,7 @@ defineProps<{
 		<component
 			:class="{ [$style.navigation_item]: true, [$style.selected_navigation_item]: selected }"
 			:is="ItemComponent"
+			v-bind="$attrs"
 		>
 			<slot name="icon">
 				<SquareCaretRightIcon />
@@ -38,7 +39,7 @@ defineProps<{
 	gap: calc(var(--global-spacing-unit) * 1.5);
 	border-radius: var(--global-border-radius-unit);
 	width: 100%;
-	color: var(--global-text-disabled-color);
+	color: var(--text-color-1);
 }
 
 .selected_navigation_item {
@@ -46,7 +47,7 @@ defineProps<{
 }
 
 .navigation_item:hover {
-	color: var(--global-primary-color);
-	background-color: var(--global-bg-muted-color);
+	color: var(--brand-color);
+	background-color: var(--surface-color-4);
 }
 </style>
