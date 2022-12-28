@@ -1,3 +1,5 @@
+@import 'scheme/light.css';
+
 :root {
 	--global-spacing-unit: 8px;
 	--global-padding-unit: var(--global-spacing-unit);
@@ -58,62 +60,51 @@
 		0px 24px 38px 3px rgba(0, 0, 0, 0.14);
 }
 
-:root { /* TODO: use dynamic colors */
-	--global-action-active-color: #0000008a;
-	--global-action-select-color: #00000014;
-	--global-action-focus-color: #00000014;
-	--global-action-hover-color: #0000000a;
-	--global-action-disable-color: #00000042;
-
-  --surface-shadow: var(--brand-color-hue) 10% 20%;
-  --shadow-strength: .02;
-
-
-  /* //////////////////////////////////////////////////////////// */
-  --text-link-color-hue: 225;
+:root {
 	--divider-color: var(--border-color);
 
-  --info-hue: 203;
-  --info-color: hsl(var(--info-hue) var(--brand-color-saturation) var(--brand-color-lightness));
-  --success-hue: 120;
-  --success-color: hsl(var(--success-hue) var(--brand-color-saturation) var(--brand-color-lightness));
-  --warning-hue: 44;
-  --warning-color: hsl(var(--warning-hue) var(--brand-color-saturation) var(--brand-color-lightness));
-  --failure-hue: 2;
-  --failure-color: hsl(var(--failure-hue) var(--brand-color-saturation) var(--brand-color-lightness));
+  /* action overlay transparency */
+  --action-overlay-transparency-factor: 1.0;
+  --hover-overlay-transparency: calc(10% * var(--action-overlay-transparency-factor));
+	--active-overlay-transparency: calc(16% * var(--action-overlay-transparency-factor));
+	--focus-overlay-transparency: calc(5% * var(--action-overlay-transparency-factor));
+	--select-overlay-transparency: calc(7% * var(--action-overlay-transparency-factor));
+	--disable-overlay-transparency: calc(38% * var(--action-overlay-transparency-factor));
+
+  /* action saturation lightness offset */
+	--disable-action-color-offset: -17%;
+  --hover-action-color-offset: 10%;
+	--select-action-color-offset: 12%;
+	--focus-action-color-offset: 15%;
+	--active-action-color-offset: -5%;
 
   /* brand */
-  --brand-color-hue: 207;
-  --brand-color-saturation: 86%;
-  --brand-color-lightness: 28%;
+  --brand-color-hue: 30;
+  --brand-color-saturation: 96%;
+  --brand-color-lightness: 51%;
 	--brand-color-original: hsl(var(--brand-color-hue) var(--brand-color-saturation) var(--brand-color-lightness));
 
-  /* light */
-  --brand-color-light-saturation: 86%;
-  --brand-color-light-lightness: 46%;
-  --brand-color-light: hsl(var(--brand-color-hue) var(--brand-color-saturation) var(--brand-color-lightness));
-  --text-color-light-1: hsl(var(--brand-color-hue) var(--brand-color-saturation) 10%);
-  --text-color-light-2: hsl(var(--brand-color-hue) 30% 30%);
-  --text-link-color-light: hsl(var(--text-link-color-hue) 85% 45%);
-  --surface-color-light-1: hsl(var(--brand-color-hue) 20% 99%);
-  --surface-color-light-2: hsl(var(--brand-color-hue) 20% 92%);
-  --surface-color-light-3: hsl(var(--brand-color-hue) 25% 90%);
-  --surface-color-light-4: hsl(var(--brand-color-hue) 20% 85%);
-  --border-color-light: hsl(var(--brand-color-hue) 10% 70%);
-  --shadow-color-light: var(--brand-color-hue) 10% 20%;
-  --shadow-strength-light: .02;
+  /* state color hue */
+  --info-color-hue: 203;
+  --success-color-hue: 120;
+  --warning-color-hue: 44;
+  --warning-color-hue: 49;
+  --failure-color-hue: 2;
 
-  /* dark */
+  /****************** dark ******************/
   --brand-color-dark-saturation: 59%;
   --brand-color-dark-lightness: 36%;
   --brand-color-dark: hsl(var(--brand-color-hue) var(--brand-color-dark-saturation) var(--brand-color-dark-lightness));
+
   --text-color-dark-1: hsl(var(--brand-color-hue) 15% 85%);
   --text-color-dark-2: hsl(var(--brand-color-hue) 5% 65%);
-  --text-link-color-dark: hsl(var(--text-link-color-hue) 80% 85%);
+  --text-link-color-dark: hsl(225 80% 85%);
+
   --surface-color-dark-1: hsl(var(--brand-color-hue) 10% 10%);
   --surface-color-dark-2: hsl(var(--brand-color-hue) 10% 15%);
   --surface-color-dark-3: hsl(var(--brand-color-hue) 5% 20%);
   --surface-color-dark-4: hsl(var(--brand-color-hue) 5% 25%);
+
   --border-color-dark: hsl(var(--brand-color-hue) 10% 40%);
   --shadow-color-dark: var(--brand-color-hue) 50% 3%;
   --shadow-strength-dark: .8;
@@ -124,7 +115,7 @@
   --brand-color-dim: hsl(var(--brand-color-hue) var(--brand-color-dim-saturation) var(--brand-color-dim-lightness));
   --text-color-dim-1: hsl(var(--brand-color-hue) 15% 75%);
   --text-color-dim-2: hsl(var(--brand-color-hue) 10% 61%);
-  --text-link-color-dim: hsl(var(--text-link-color-hue) 85% 85%);
+  --text-link-color-dim: hsl(214 82% 81%);
   --surface-color-dim-1: hsl(var(--brand-color-hue) 10% 20%);
   --surface-color-dim-2: hsl(var(--brand-color-hue) 10% 25%);
   --surface-color-dim-3: hsl(var(--brand-color-hue) 5% 30%);
@@ -134,23 +125,6 @@
   --shadow-strength-dim: .2;
 }
 
-[color-scheme="light"] {
-  color-scheme: light;
-
-  --brand-color: var(--brand-color-light);
-  --brand-color-saturation: var(--brand-color-light-saturation);
-  --brand-color-lightness: var(--brand-color-light-lightness);
-  --text-color-1: var(--text-color-light-1);
-  --text-color-2: var(--text-color-light-2);
-  --text-link-color: var(--text-link-color-light);
-  --surface-color-1: var(--surface-color-light-1);
-  --surface-color-2: var(--surface-color-light-2);
-  --surface-color-3: var(--surface-color-light-3);
-  --surface-color-4: var(--surface-color-light-4);
-  --border-color: var(--border-color-light);
-  --shadow-color: var(--shadow-color-light);
-  --shadow-strength: var(--shadow-strength-light);
-}
 
 [color-scheme="dark"] {
   color-scheme: dark;

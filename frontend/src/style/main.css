@@ -18,13 +18,23 @@ ul, ol {
 	margin-right: calc(var(--global-margin-unit) * 1);
 }
 
+:focus-visible {
+	outline-color: black;
+	outline-width: 2px;
+	outline-style: dotted;
+	outline-offset: 0;
+}
+
 a {
 	color: var(--text-link-color);
 	text-decoration: none;
 	cursor: pointer;
 }
-a:hover, a:link, a:visited, a:active {
+a:link, a:visited, a:active {
 	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
 }
 
 button {
@@ -53,7 +63,7 @@ body {
 	font-weight: var(--global-font-weight-regular);
 	font-size: var(--global-font-size);
 	height: 100vh;
-	background-color: var(--surface-color-4);
+	background-color: var(--surface-color-1);
 }
 
 #app {

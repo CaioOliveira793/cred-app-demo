@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, h } from 'vue';
+import { ref } from 'vue';
 import NavigationItem from '@/component/navigation/NavigationItem.vue';
 import AppLogo from '@/component/AppLogo.vue';
 import UserProfileLandscape from '@/component/user/UserProfileLandscape.vue';
@@ -29,7 +29,7 @@ const user = {
 			<AppLogo :landscape="expanded" :class="$style.logo" />
 			<VButton
 				variant="icon_flat"
-				size="small"
+				size="medium"
 				:class="{ [$style.expanded_button]: expanded }"
 				@click="expanded = !expanded"
 			>
@@ -40,13 +40,7 @@ const user = {
 		<hr />
 		<nav :class="{ [$style.expanded_navigation]: expanded, [$style.app_navigation]: true }">
 			<ul>
-				<NavigationItem
-					name="Home"
-					:expanded="expanded"
-					:ItemComponent="
-						(props, { slots }) => h('a', { ...props, href: 'some' }, slots.default?.())
-					"
-				>
+				<NavigationItem name="Home" :expanded="expanded" ItemComponent="a" href="home" selected>
 					<template #icon>
 						<HouseIcon />
 					</template>
