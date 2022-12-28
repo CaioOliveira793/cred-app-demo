@@ -22,14 +22,20 @@ interface ButtonProps {
 
 withDefaults(defineProps<ButtonProps>(), {
 	color: 'primary',
-	loading: false,
 	size: 'medium',
 	variant: 'contained',
+	loading: false,
+	disabled: false,
 });
 </script>
 
 <template>
-	<button :class="[ButtonStyle[variant], ButtonStyle[size]]" :s-color="color" :disabled="disabled">
+	<button
+		:class="[ButtonStyle[variant], ButtonStyle[size]]"
+		:s-color="color"
+		:loading="loading ? '' : null"
+		:disabled="disabled ?? loading"
+	>
 		<div :class="SpinnerStyle.arch" v-if="loading" />
 		<slot name="start-icon" v-else />
 		<slot />

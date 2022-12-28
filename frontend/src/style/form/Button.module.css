@@ -124,6 +124,12 @@
 }
 
 
+/* loading */
+.button[loading] {
+	cursor: wait;
+}
+
+
 /* :hover */
 .outlined:hover,
 .icon_outlined:hover {
@@ -222,6 +228,10 @@
 
 
 /* :active */
+.button:active {
+	transform: translateY(1px);
+}
+
 .outlined:active,
 .text:active,
 .icon_outlined:active,
@@ -261,7 +271,7 @@
 /* :disabled */
 .button:disabled,
 .button[disabled] {
-	cursor: default;
+	cursor: not-allowed;
 	pointer-events: none;
 }
 
