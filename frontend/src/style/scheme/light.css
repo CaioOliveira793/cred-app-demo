@@ -1,13 +1,13 @@
 :root {
-  /* brand color */
   --color-saturation-light: 75%;
   --color-lightness-light: 50%;
+
+  /* brand color */
   --brand-color-light: hsl(
 		var(--brand-color-hue)
 		var(--color-saturation-light)
 		var(--color-lightness-light)
 	);
-
   --hover-brand-color-light: hsl(
     var(--brand-color-hue)
     calc(var(--color-saturation-light) + var(--hover-action-color-offset))
@@ -40,7 +40,6 @@
 		var(--color-saturation-light)
 		var(--color-lightness-light)
 	);
-
   --hover-info-color-light: hsl(
     var(--info-color-hue)
     calc(var(--color-saturation-light) + var(--hover-action-color-offset))
@@ -73,7 +72,6 @@
 		var(--color-saturation-light)
 		var(--color-lightness-light)
 	);
-
   --hover-success-color-light: hsl(
     var(--success-color-hue)
     calc(var(--color-saturation-light) + var(--hover-action-color-offset))
@@ -106,7 +104,6 @@
 		var(--color-saturation-light)
 		var(--color-lightness-light)
 	);
-
   --hover-warning-color-light: hsl(
     var(--warning-color-hue)
     calc(var(--color-saturation-light) + var(--hover-action-color-offset))
@@ -139,7 +136,6 @@
 		var(--color-saturation-light)
 		var(--color-lightness-light)
 	);
-
   --hover-failure-color-light: hsl(
     var(--failure-color-hue)
     calc(var(--color-saturation-light) + var(--hover-action-color-offset))

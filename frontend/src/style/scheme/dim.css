@@ -1,0 +1,257 @@
+:root {
+	--color-saturation-dim: 39%;
+  --color-lightness-dim: 31%;
+
+	/* brand color */
+  --brand-color-dim: hsl(
+		var(--brand-color-hue)
+		var(--color-saturation-dim)
+		var(--color-lightness-dim)
+	);
+  --hover-brand-color-dim: hsl(
+    var(--brand-color-hue)
+    calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
+  );
+  --active-brand-color-dim: hsl(
+    var(--brand-color-hue)
+    calc(var(--color-saturation-dim) + var(--active-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--active-action-color-offset))
+  );
+  --focus-brand-color-dim: hsl(
+    var(--brand-color-hue)
+    calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
+  );
+	--select-brand-color-dim: hsl(
+    var(--brand-color-hue)
+    calc(var(--color-saturation-dim) + var(--select-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--select-action-color-offset))
+  );
+	--disable-brand-color-dim: hsl(
+    var(--brand-color-hue)
+    calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
+  );
+
+	/* info color */
+  --info-color-dim: hsl(
+		var(--info-color-hue)
+		var(--color-saturation-dim)
+		var(--color-lightness-dim)
+	);
+  --hover-info-color-dim: hsl(
+    var(--info-color-hue)
+    calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
+  );
+  --active-info-color-dim: hsl(
+    var(--info-color-hue)
+    calc(var(--color-saturation-dim) + var(--active-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--active-action-color-offset))
+  );
+  --focus-info-color-dim: hsl(
+    var(--info-color-hue)
+    calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
+  );
+	--select-info-color-dim: hsl(
+    var(--info-color-hue)
+    calc(var(--color-saturation-dim) + var(--select-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--select-action-color-offset))
+  );
+	--disable-info-color-dim: hsl(
+    var(--info-color-hue)
+    calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
+  );
+
+	/* success color */
+  --success-color-dim: hsl(
+		var(--success-color-hue)
+		var(--color-saturation-dim)
+		var(--color-lightness-dim)
+	);
+  --hover-success-color-dim: hsl(
+    var(--success-color-hue)
+    calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
+  );
+  --active-success-color-dim: hsl(
+    var(--success-color-hue)
+    calc(var(--color-saturation-dim) + var(--active-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--active-action-color-offset))
+  );
+  --focus-success-color-dim: hsl(
+    var(--success-color-hue)
+    calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
+  );
+	--select-success-color-dim: hsl(
+    var(--success-color-hue)
+    calc(var(--color-saturation-dim) + var(--select-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--select-action-color-offset))
+  );
+	--disable-success-color-dim: hsl(
+    var(--success-color-hue)
+    calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
+  );
+
+	/* warning color */
+	--warning-color-dim: hsl(
+		var(--warning-color-hue)
+		var(--color-saturation-dim)
+		var(--color-lightness-dim)
+	);
+  --hover-warning-color-dim: hsl(
+    var(--warning-color-hue)
+    calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
+  );
+  --active-warning-color-dim: hsl(
+    var(--warning-color-hue)
+    calc(var(--color-saturation-dim) + var(--active-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--active-action-color-offset))
+  );
+  --focus-warning-color-dim: hsl(
+    var(--warning-color-hue)
+    calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
+  );
+	--select-warning-color-dim: hsl(
+    var(--warning-color-hue)
+    calc(var(--color-saturation-dim) + var(--select-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--select-action-color-offset))
+  );
+	--disable-warning-color-dim: hsl(
+    var(--warning-color-hue)
+    calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
+  );
+
+	/* failure color */
+	--failure-color-dim: hsl(
+		var(--failure-color-hue)
+		var(--color-saturation-dim)
+		var(--color-lightness-dim)
+	);
+  --hover-failure-color-dim: hsl(
+    var(--failure-color-hue)
+    calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
+  );
+  --active-failure-color-dim: hsl(
+    var(--failure-color-hue)
+    calc(var(--color-saturation-dim) + var(--active-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--active-action-color-offset))
+  );
+  --focus-failure-color-dim: hsl(
+    var(--failure-color-hue)
+    calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
+  );
+	--select-failure-color-dim: hsl(
+    var(--failure-color-hue)
+    calc(var(--color-saturation-dim) + var(--select-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--select-action-color-offset))
+  );
+	--disable-failure-color-dim: hsl(
+    var(--failure-color-hue)
+    calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
+    calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
+  );
+
+  /* action overlay */
+  --hover-overlay-dim: rgb(255 255 255 / var(--hover-overlay-transparency));
+	--active-overlay-dim: rgb(255 255 255 / var(--active-overlay-transparency));
+	--focus-overlay-dim: rgb(255 255 255 / var(--focus-overlay-transparency));
+	--select-overlay-dim: rgb(255 255 255 / var(--select-overlay-transparency));
+	--disable-overlay-dim: rgb(255 255 255 / var(--disable-overlay-transparency));
+
+	/* text color */
+  --text-color-1-dim: hsl(var(--brand-color-hue) 15% 75%);
+  --text-color-2-dim: hsl(var(--brand-color-hue) 10% 61%);
+  --text-link-color-dim: hsl(214 82% 81%);
+
+	/* surface color */
+  --surface-color-1-dim: hsl(var(--brand-color-hue) 10% 20%);
+  --surface-color-2-dim: hsl(var(--brand-color-hue) 10% 25%);
+  --surface-color-3-dim: hsl(var(--brand-color-hue) 5% 30%);
+  --surface-color-4-dim: hsl(var(--brand-color-hue) 5% 35%);
+	--surface-disable-color-dim: #707070;
+
+  --border-color-dim: hsl(var(--brand-color-hue) 10% 50%);
+  --shadow-color-dim: var(--brand-color-hue) 30% 13%;
+  --shadow-strength-dim: .2;
+}
+
+[color-scheme="dim"] {
+  color-scheme: dim;
+
+	/* brand color */
+  --brand-color: var(--brand-color-dim);
+  --color-saturation: var(--color-saturation-dim);
+  --color-lightness: var(--color-lightness-dim);
+
+	--hover-brand-color: var(--hover-brand-color-dim);
+	--active-brand-color: var(--active-brand-color-dim);
+	--focus-brand-color: var(--focus-brand-color-dim);
+	--select-brand-color: var(--select-brand-color-dim);
+	--disable-brand-color: var(--disable-brand-color-dim);
+
+	/* info color */
+	--info-color: var(--info-color-dim);
+	--hover-info-color: var(--hover-info-color-dim);
+	--active-info-color: var(--active-info-color-dim);
+	--focus-info-color: var(--focus-info-color-dim);
+	--select-info-color: var(--select-info-color-dim);
+	--disable-info-color: var(--disable-info-color-dim);
+
+	/* success color */
+	--success-color: var(--success-color-dim);
+	--hover-success-color: var(--hover-success-color-dim);
+	--active-success-color: var(--active-success-color-dim);
+	--focus-success-color: var(--focus-success-color-dim);
+	--select-success-color: var(--select-success-color-dim);
+	--disable-success-color: var(--disable-success-color-dim);
+
+	/* warning color */
+	--warning-color: var(--warning-color-dim);
+	--hover-warning-color: var(--hover-warning-color-dim);
+	--active-warning-color: var(--active-warning-color-dim);
+	--focus-warning-color: var(--focus-warning-color-dim);
+	--select-warning-color: var(--select-warning-color-dim);
+	--disable-warning-color: var(--disable-warning-color-dim);
+
+	/* failure color */
+	--failure-color: var(--failure-color-dim);
+	--hover-failure-color: var(--hover-failure-color-dim);
+	--active-failure-color: var(--active-failure-color-dim);
+	--focus-failure-color: var(--focus-failure-color-dim);
+	--select-failure-color: var(--select-failure-color-dim);
+	--disable-failure-color: var(--disable-failure-color-dim);
+
+	/* action overlay */
+  --active-overlay: var(--active-overlay-dim);
+	--select-overlay: var(--select-overlay-dim);
+	--focus-overlay: var(--focus-overlay-dim);
+	--hover-overlay: var(--hover-overlay-dim);
+	--disable-overlay: var(--disable-overlay-dim);
+
+	/* text color */
+  --text-color-1: var(--text-color-1-dim);
+  --text-color-2: var(--text-color-2-dim);
+  --text-link-color: var(--text-link-color-dim);
+
+	/* surface color */
+  --surface-color-1: var(--surface-color-1-dim);
+  --surface-color-2: var(--surface-color-2-dim);
+  --surface-color-3: var(--surface-color-3-dim);
+  --surface-color-4: var(--surface-color-4-dim);
+	--surface-disable-color: var(--surface-disable-color-dim);
+
+  --border-color: var(--border-color-dim);
+  --shadow-color: var(--shadow-color-dim);
+  --shadow-strength: var(--shadow-strength-dim);
+}

@@ -1,17 +1,22 @@
 @import 'scheme/light.css';
+@import 'scheme/dark.css';
+@import 'scheme/dim.css';
 
 :root {
+	/* spacing */
 	--global-spacing-unit: 8px;
 	--global-padding-unit: var(--global-spacing-unit);
 	--global-margin-unit: var(--global-spacing-unit);
 	--global-border-radius-unit: 4px;
 
+	/* breakpoint */
 	--global-breakpoint-xs: 300px;
 	--global-breakpoint-sm: 600px;
 	--global-breakpoint-md: 900px;
 	--global-breakpoint-lg: 1200px;
 	--global-breakpoint-xl: 1500px;
 
+	/* z-index */
 	--global-index-layer-1: 100;
 	--global-index-layer-2: 200;
 	--global-index-layer-3: 300;
@@ -19,6 +24,7 @@
 	--global-index-layer-5: 500;
 	--global-index-layer-6: 600;
 
+	/* font */
 	--global-font-family: Cantarell, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     Inter, Avenir, Helvetica, Arial, system-ui, sans-serif;
@@ -35,6 +41,7 @@
 	--global-letter-spacing-wider: 0.05em;
 	--global-letter-spacing-widest: 0.1em;
 
+	/* shadow */
 	--global-shadow-1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
 		0px 1px 1px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -58,9 +65,7 @@
 		0px 8px 38px 7px rgba(0, 0, 0, 0.12);
 	--global-shadow-24: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
 		0px 24px 38px 3px rgba(0, 0, 0, 0.14);
-}
 
-:root {
 	--divider-color: var(--border-color);
 
   /* action overlay transparency */
@@ -87,79 +92,8 @@
   /* state color hue */
   --info-color-hue: 203;
   --success-color-hue: 120;
-  --warning-color-hue: 44;
   --warning-color-hue: 49;
   --failure-color-hue: 2;
-
-  /****************** dark ******************/
-  --brand-color-dark-saturation: 59%;
-  --brand-color-dark-lightness: 36%;
-  --brand-color-dark: hsl(var(--brand-color-hue) var(--brand-color-dark-saturation) var(--brand-color-dark-lightness));
-
-  --text-color-dark-1: hsl(var(--brand-color-hue) 15% 85%);
-  --text-color-dark-2: hsl(var(--brand-color-hue) 5% 65%);
-  --text-link-color-dark: hsl(225 80% 85%);
-
-  --surface-color-dark-1: hsl(var(--brand-color-hue) 10% 10%);
-  --surface-color-dark-2: hsl(var(--brand-color-hue) 10% 15%);
-  --surface-color-dark-3: hsl(var(--brand-color-hue) 5% 20%);
-  --surface-color-dark-4: hsl(var(--brand-color-hue) 5% 25%);
-
-  --border-color-dark: hsl(var(--brand-color-hue) 10% 40%);
-  --shadow-color-dark: var(--brand-color-hue) 50% 3%;
-  --shadow-strength-dark: .8;
-
-  /* dim */
-  --brand-color-dim-saturation: 39%;
-  --brand-color-dim-lightness: 31%;
-  --brand-color-dim: hsl(var(--brand-color-hue) var(--brand-color-dim-saturation) var(--brand-color-dim-lightness));
-  --text-color-dim-1: hsl(var(--brand-color-hue) 15% 75%);
-  --text-color-dim-2: hsl(var(--brand-color-hue) 10% 61%);
-  --text-link-color-dim: hsl(214 82% 81%);
-  --surface-color-dim-1: hsl(var(--brand-color-hue) 10% 20%);
-  --surface-color-dim-2: hsl(var(--brand-color-hue) 10% 25%);
-  --surface-color-dim-3: hsl(var(--brand-color-hue) 5% 30%);
-  --surface-color-dim-4: hsl(var(--brand-color-hue) 5% 35%);
-  --border-color-dim: hsl(var(--brand-color-hue) 10% 50%);
-  --shadow-color-dim: var(--brand-color-hue) 30% 13%;
-  --shadow-strength-dim: .2;
-}
-
-
-[color-scheme="dark"] {
-  color-scheme: dark;
-
-  --brand-color: var(--brand-color-dark);
-  --brand-color-saturation: var(--brand-color-dark-saturation);
-  --brand-color-lightness: var(--brand-color-dark-lightness);
-  --text-color-1: var(--text-color-dark-1);
-  --text-color-2: var(--text-color-dark-2);
-  --text-link-color: var(--text-link-color-dark);
-  --surface-color-1: var(--surface-color-dark-1);
-  --surface-color-2: var(--surface-color-dark-2);
-  --surface-color-3: var(--surface-color-dark-3);
-  --surface-color-4: var(--surface-color-dark-4);
-  --border-color: var(--border-color-dark);
-  --shadow-color: var(--shadow-color-dark);
-  --shadow-strength: var(--shadow-strength-dark);
-}
-
-[color-scheme="dim"] {
-  color-scheme: dim;
-
-  --brand-color: var(--brand-color-dim);
-  --brand-color-saturation: var(--brand-color-dim-saturation);
-  --brand-color-lightness: var(--brand-color-dim-lightness);
-  --text-color-1: var(--text-color-dim-1);
-  --text-color-2: var(--text-color-dim-2);
-  --text-link-color: var(--text-link-color-dim);
-  --surface-color-1: var(--surface-color-dim-1);
-  --surface-color-2: var(--surface-color-dim-2);
-  --surface-color-3: var(--surface-color-dim-3);
-  --surface-color-4: var(--surface-color-dim-4);
-  --border-color: var(--border-color-dim);
-  --shadow-color: var(--shadow-color-dim);
-  --shadow-strength: var(--shadow-strength-dim);
 }
 
 .global_surface1 {
