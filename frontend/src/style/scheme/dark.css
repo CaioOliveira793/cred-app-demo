@@ -181,9 +181,10 @@
   --surface-color-4-dark: hsl(var(--brand-color-hue) 5% 25%);
   --surface-disable-color-dark: #707070;
 
+  /* elevation */
   --border-color-dark: hsl(var(--brand-color-hue) 10% 40%);
-  --shadow-color-dark: var(--brand-color-hue) 50% 3%;
-  --shadow-strength-dark: .8;
+  --shadow-color-hsl-dark: var(--brand-color-hue) 70% 1%;
+  --shadow-strength-dark: .2;
 }
 
 [color-scheme="dark"] {
@@ -251,7 +252,8 @@
   --surface-color-4: var(--surface-color-4-dark);
 	--surface-disable-color: var(--surface-disable-color-dark);
 
+  /* elevation */
   --border-color: var(--border-color-dark);
-  --shadow-color: var(--shadow-color-dark);
+  --shadow-color-hsl: var(--shadow-color-hsl-dark);
   --shadow-strength: var(--shadow-strength-dark);
 }

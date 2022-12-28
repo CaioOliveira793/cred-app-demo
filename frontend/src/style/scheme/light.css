@@ -181,9 +181,10 @@
   --surface-color-4-light: hsl(var(--brand-color-hue) 20% 85%);
 	--surface-disable-color-light: #d0d0d0;
 
+  /* elevation */
   --border-color-light: hsl(var(--brand-color-hue) 10% 70%);
-  --shadow-color-light: var(--brand-color-hue) 10% 20%;
-  --shadow-strength-light: .02;
+  --shadow-color-hsl-light: var(--brand-color-hue) 10% 20%;
+  --shadow-strength-light: .1;
 }
 
 [color-scheme="light"] {
@@ -251,7 +252,8 @@
   --surface-color-4: var(--surface-color-4-light);
 	--surface-disable-color: var(--surface-disable-color-light);
 
+  /* elevation */
   --border-color: var(--border-color-light);
-  --shadow-color: var(--shadow-color-light);
+  --shadow-color-hsl: var(--shadow-color-hsl-light);
   --shadow-strength: var(--shadow-strength-light);
 }
