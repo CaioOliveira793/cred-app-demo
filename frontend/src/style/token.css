@@ -4,42 +4,42 @@
 
 :root {
 	/* spacing */
-	--global-spacing-unit: 8px;
-	--global-padding-unit: var(--global-spacing-unit);
-	--global-margin-unit: var(--global-spacing-unit);
-	--global-border-radius-unit: 4px;
+	--spacing-unit: 8px;
+	--padding-unit: var(--spacing-unit);
+	--margin-unit: var(--spacing-unit);
+	--border-radius-unit: 4px;
 
 	/* breakpoint */
-	--global-breakpoint-xs: 300px;
-	--global-breakpoint-sm: 600px;
-	--global-breakpoint-md: 900px;
-	--global-breakpoint-lg: 1200px;
-	--global-breakpoint-xl: 1500px;
+	--breakpoint-xs: 300px;
+	--breakpoint-sm: 600px;
+	--breakpoint-md: 900px;
+	--breakpoint-lg: 1200px;
+	--breakpoint-xl: 1500px;
 
 	/* z-index */
-	--global-index-layer-1: 100;
-	--global-index-layer-2: 200;
-	--global-index-layer-3: 300;
-	--global-index-layer-4: 400;
-	--global-index-layer-5: 500;
-	--global-index-layer-6: 600;
+	--index-layer-1: 100;
+	--index-layer-2: 200;
+	--index-layer-3: 300;
+	--index-layer-4: 400;
+	--index-layer-5: 500;
+	--index-layer-6: 600;
 
 	/* font */
-	--global-font-family: Cantarell, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+	--font-family: Cantarell, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     Inter, Avenir, Helvetica, Arial, system-ui, sans-serif;
-	--global-font-weight-light: 300;
-	--global-font-weight-regular: 400;
-	--global-font-weight-medium: 500;
-	--global-font-weight-bold: 700;
-	--global-font-size: 1rem;
-	--global-line-height: 1em;
-	--global-letter-spacing-tighter: -0.05em;
-	--global-letter-spacing-tight: -0.025em;
-	--global-letter-spacing-normal: 0em;
-	--global-letter-spacing-wide: 0.025em;
-	--global-letter-spacing-wider: 0.05em;
-	--global-letter-spacing-widest: 0.1em;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+	--font-size: 1rem;
+	--line-height: 1em;
+	--letter-spacing-tighter: -0.05em;
+	--letter-spacing-tight: -0.025em;
+	--letter-spacing-normal: 0em;
+	--letter-spacing-wide: 0.025em;
+	--letter-spacing-wider: 0.05em;
+	--letter-spacing-widest: 0.1em;
 
 	/* elevation */
 	--divider-color: var(--border-color);

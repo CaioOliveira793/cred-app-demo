@@ -29,13 +29,13 @@ defineProps<UserProfileProps>();
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-items: center;
-	gap: calc(var(--global-spacing-unit) * 1);
+	gap: calc(var(--spacing-unit) * 1);
 	width: 100%;
-	border-radius: calc(var(--global-border-radius-unit) * 1);
+	border-radius: calc(var(--border-radius-unit) * 1);
 }
 
 .expanded_user_profile {
-	padding: calc(var(--global-padding-unit) * 1) calc(var(--global-padding-unit) * 1);
+	padding: calc(var(--padding-unit) * 1) calc(var(--padding-unit) * 1);
 	background-color: var(--surface-color-3);
 }
 

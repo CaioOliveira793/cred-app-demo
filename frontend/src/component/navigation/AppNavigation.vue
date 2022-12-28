@@ -80,8 +80,8 @@ const user = {
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
-	padding: calc(var(--global-padding-unit) * 2);
-	gap: calc(var(--global-spacing-unit) * 2);
+	padding: calc(var(--padding-unit) * 2);
+	gap: calc(var(--spacing-unit) * 2);
 	background-color: var(--surface-color-2);
 }
 
@@ -95,7 +95,7 @@ const user = {
 	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
-	gap: calc(var(--global-spacing-unit) * 2);
+	gap: calc(var(--spacing-unit) * 2);
 	width: 100%;
 }
 

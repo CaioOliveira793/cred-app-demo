@@ -17,7 +17,7 @@ defineProps<{ landscape?: boolean }>();
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: var(--global-spacing-unit);
+	gap: var(--spacing-unit);
 }
 
 .app_logo {
@@ -26,13 +26,13 @@ defineProps<{ landscape?: boolean }>();
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	padding: calc(var(--global-padding-unit) * 1);
+	padding: calc(var(--padding-unit) * 1);
 	background-color: var(--surface-color-1);
-	border-radius: calc(var(--global-border-radius-unit) * 2);
+	border-radius: calc(var(--border-radius-unit) * 2);
 }
 
 strong.logo_text {
-	font-weight: var(--global-font-weight-bold);
+	font-weight: var(--font-weight-bold);
 }
 
 .logo_text {

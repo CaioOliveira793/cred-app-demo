@@ -51,9 +51,9 @@ withDefaults(defineProps<NavigationItem>(), {
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 	align-items: center;
-	padding: calc(var(--global-padding-unit) * 1) calc(var(--global-padding-unit) * 1);
-	gap: calc(var(--global-spacing-unit) * 1.5);
-	border-radius: var(--global-border-radius-unit);
+	padding: calc(var(--padding-unit) * 1) calc(var(--padding-unit) * 1);
+	gap: calc(var(--spacing-unit) * 1.5);
+	border-radius: var(--border-radius-unit);
 	width: 100%;
 	color: var(--nav-item-color);
 	background-color: var(--nav-item-bg-color);

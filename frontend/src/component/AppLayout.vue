@@ -26,7 +26,7 @@ import AppNavigation from '@/component/navigation/AppNavigation.vue';
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding: calc(var(--global-padding-unit) * 4);
-	gap: calc(var(--global-padding-unit) * 4);
+	padding: calc(var(--padding-unit) * 4);
+	gap: calc(var(--padding-unit) * 4);
 }
 </style>

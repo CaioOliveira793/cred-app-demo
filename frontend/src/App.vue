@@ -29,7 +29,7 @@ import AppLayout from '@/component/AppLayout.vue';
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: flex-start;
-	gap: calc(var(--global-spacing-unit) * 2);
+	gap: calc(var(--spacing-unit) * 2);
 }
 
 .card_metric_container {
@@ -37,14 +37,14 @@ import AppLayout from '@/component/AppLayout.vue';
 	flex-flow: column nowrap;
 	width: fit-content;
 	min-width: 220px;
-	padding: calc(var(--global-padding-unit) * 2);
-	border-radius: var(--global-border-radius-unit);
+	padding: calc(var(--padding-unit) * 2);
+	border-radius: var(--border-radius-unit);
 	color: var(--text-color-2);
 	background-color: var(--surface-color-2);
 }
 
 .card_metric_title {
-	font-weight: var(--global-font-weight-bold);
+	font-weight: var(--font-weight-bold);
 	composes: subtitle2 from '@/style/Typography.module.css';
 }
 

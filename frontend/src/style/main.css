@@ -15,7 +15,7 @@ ul, ol {
 	list-style: disc inside;
 }
 ::marker {
-	margin-right: calc(var(--global-margin-unit) * 1);
+	margin-right: calc(var(--margin-unit) * 1);
 }
 
 :focus-visible {
@@ -59,9 +59,9 @@ svg {
 
 body {
 	color: var(--text-color-1);
-	font-family: var(--global-font-family);
-	font-weight: var(--global-font-weight-regular);
-	font-size: var(--global-font-size);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight-regular);
+	font-size: var(--font-size);
 	height: 100vh;
 	background-color: var(--surface-color-1);
 }
