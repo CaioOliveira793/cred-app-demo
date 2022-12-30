@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import '@/style/main.css';
-import AppLayout from '@/component/layout/AppLayout.vue';
+import { APP_CONTENT_ELEMENT_ID } from './config/constant';
 </script>
 
 <template>
-	<AppLayout />
+	<router-view :name="APP_CONTENT_ELEMENT_ID" :id="APP_CONTENT_ELEMENT_ID" />
 </template>

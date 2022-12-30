@@ -4,7 +4,7 @@ import {
 	TOP_NAVIGATION_ELEMENT_ID,
 	LEFT_SIDEBAR_ELEMENT_ID,
 	RIGHT_SIDEBAR_ELEMENT_ID,
-	APP_CONTENT_ELEMENT_ID,
+	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
 import { CSSUnit } from '@/helper/StyleHelper';
 import type { ChangeClientRectRequestEvent } from '@/event/LayoutEvent';
@@ -45,8 +45,8 @@ const layout = reactive({
 				@change-client-rect-request="handleSidebarWidthChange('left', $event)"
 			/>
 			<router-view
-				:name="APP_CONTENT_ELEMENT_ID"
-				:id="APP_CONTENT_ELEMENT_ID"
+				:name="MAIN_CONTENT_ELEMENT_ID"
+				:id="MAIN_CONTENT_ELEMENT_ID"
 				:class="$style.app_content"
 			/>
 			<router-view
