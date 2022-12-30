@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Component, VNode } from 'vue';
 import SquareCaretRightIcon from '~icons/fa6-solid/square-caret-right';
 
 interface NavigationItem {
@@ -7,7 +6,7 @@ interface NavigationItem {
 	expanded?: boolean;
 	selected?: boolean;
 	disabled?: boolean;
-	ItemComponent: 'a' | 'button' | Component | VNode | (() => VNode);
+	ItemComponent: 'a' | 'button' | 'router-link';
 }
 
 withDefaults(defineProps<NavigationItem>(), {
@@ -18,7 +17,7 @@ withDefaults(defineProps<NavigationItem>(), {
 </script>
 
 <template>
-	<li :class="$style.menu_item" role="menuitem">
+	<li :class="$style.menu_item" role="menuitem" :title="name">
 		<component
 			:class="{
 				[$style.navigation_item]: true,
@@ -33,7 +32,7 @@ withDefaults(defineProps<NavigationItem>(), {
 			<slot name="icon">
 				<SquareCaretRightIcon />
 			</slot>
-			<span v-if="expanded">{{ name }}</span>
+			<span v-show="expanded">{{ name }}</span>
 		</component>
 	</li>
 </template>
