@@ -19,3 +19,11 @@ export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
 export const COLOR_SCHEME_HTML_ATTRIBUTE = 'color-scheme';
 
 export const COLOR_SCHEME_STORAGE_KEY = makeAppKey('color-scheme');
+
+// ---
+
+export const APP_ROOT_ELEMENT_ID = 'app';
+export const APP_CONTENT_ELEMENT_ID = 'app_content';
+export const TOP_NAVIGATION_ELEMENT_ID = 'top_navigation';
+export const LEFT_SIDEBAR_ELEMENT_ID = 'left_sidebar';
+export const RIGHT_SIDEBAR_ELEMENT_ID = 'right_sidebar';
