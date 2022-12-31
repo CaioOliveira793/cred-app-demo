@@ -118,6 +118,7 @@ onMounted(() => {
 			<VButton
 				variant="icon_flat"
 				size="medium"
+				aria-label="left-sidebar-menu"
 				:class="{ [$style.expanded_button]: expanded }"
 				@click="handleExpand"
 			>

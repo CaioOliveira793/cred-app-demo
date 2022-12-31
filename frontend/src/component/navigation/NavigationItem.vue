@@ -17,16 +17,13 @@ withDefaults(defineProps<NavigationItem>(), {
 </script>
 
 <template>
-	<li :class="$style.menu_item" role="menuitem" :title="name">
+	<li :class="$style.menu_item" :title="name">
 		<component
-			:class="{
-				[$style.navigation_item]: true,
-			}"
+			:class="$style.navigation_item"
 			:is="ItemComponent"
 			:disabled="disabled ? '' : null"
-			:aria-disabled="disabled"
 			:selected="selected ? '' : null"
-			:aria-selected="selected"
+			:aria-label="name"
 			v-bind="$attrs"
 		>
 			<slot name="icon">
