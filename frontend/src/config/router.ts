@@ -27,6 +27,13 @@ export const routes: readonly RouteRecordRaw[] = [
 		},
 		children: [AppLayoutRecord],
 	},
+	{
+		path: '/:catch_all(.*)',
+		name: 'NotFount',
+		components: {
+			[APP_CONTENT_ELEMENT_ID]: () => import('@/page/NotFound.vue'),
+		},
+	},
 ];
 
 export const router = createRouter({
