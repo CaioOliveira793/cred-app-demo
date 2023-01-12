@@ -19,10 +19,10 @@ ul, ol {
 }
 
 :focus-visible {
-	outline-color: var(--brand-color);
-	outline-width: 2px;
-	outline-style: dotted;
-	outline-offset: 1px;
+	outline-color: var(--outline-color);
+	outline-style: var(--outline-style);
+	outline-width: var(--outline-width);
+	outline-offset: var(--outline-offset);
 }
 
 a {
@@ -35,6 +35,13 @@ a:link, a:visited, a:active {
 }
 a:hover {
 	text-decoration: underline;
+}
+
+input[type="range"] {
+	appearance: none;
+	-webkit-appearance: none;
+	background: transparent;
+	cursor: pointer;
 }
 
 button {

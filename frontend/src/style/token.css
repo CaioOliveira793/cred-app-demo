@@ -8,6 +8,7 @@
 	--padding-unit: var(--spacing-unit);
 	--margin-unit: var(--spacing-unit);
 	--border-radius-unit: 4px;
+	--full-border-radius: 99999px;
 
 	/* breakpoint */
 	--breakpoint-xs: 300px;
@@ -66,6 +67,12 @@
 	--shadow-7: 0px 10px 13px -6px hsl(var(--shadow-color-hsl) / calc(var(--shadow-strength) + .1)),
 		0px 20px 31px 3px hsl(var(--shadow-color-hsl) / calc(var(--shadow-strength) + .04)),
 		0px 8px 38px 7px hsl(var(--shadow-color-hsl) / calc(var(--shadow-strength) + .02));
+
+	/* navigation focus */
+	--outline-color: var(--brand-color);
+	--outline-style: dotted;
+	--outline-width: 2px;
+	--outline-offset: 1px;
 
   /* action overlay transparency */
   --action-overlay-transparency-factor: 1.0;
