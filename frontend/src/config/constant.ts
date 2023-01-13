@@ -15,8 +15,12 @@ function makeAppKey(key: string): string {
 export type ColorScheme = 'light' | 'dark' | 'dim';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
+export const DARK_COLOR_SCHEME: ColorScheme = 'dark';
+export const LIGHT_COLOR_SCHEME: ColorScheme = 'light';
+export const COLOR_SCHEME_LIST: ColorScheme[] = ['light', 'dark', 'dim'];
 
 export const COLOR_SCHEME_HTML_ATTRIBUTE = 'color-scheme';
+export const THEME_COLOR_HTML_ATTRIBUTE = 'theme-color';
 
 export const COLOR_SCHEME_STORAGE_KEY = makeAppKey('color-scheme');
 

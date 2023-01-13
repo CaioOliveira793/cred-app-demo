@@ -6,7 +6,7 @@ import {
 	RIGHT_SIDEBAR_ELEMENT_ID,
 	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
-import { CSSUnit } from '@/helper/StyleHelper';
+import { numberToCSSpx } from '@/helper/StyleHelper';
 import type { ChangeClientRectRequestEvent } from '@/event/LayoutEvent';
 
 type SidebarPosition = 'left' | 'right';
@@ -14,10 +14,10 @@ type SidebarPosition = 'left' | 'right';
 function handleSidebarWidthChange(position: SidebarPosition, event: ChangeClientRectRequestEvent) {
 	switch (position) {
 		case 'left':
-			layout.left_sidebar_width = CSSUnit.valueToPx(event.expected.width);
+			layout.left_sidebar_width = numberToCSSpx(event.expected.width);
 			break;
 		case 'right':
-			layout.right_sidebar_width = CSSUnit.valueToPx(event.expected.width);
+			layout.right_sidebar_width = numberToCSSpx(event.expected.width);
 			break;
 	}
 }
@@ -105,6 +105,7 @@ const layout = reactive({
 	padding: calc(var(--padding-unit) * 4);
 	gap: calc(var(--padding-unit) * 4);
 	width: 100%;
+	min-height: 100%;
 
 	margin-top: v-bind('layout.top_menu_height');
 	margin-left: v-bind('layout.left_sidebar_width');

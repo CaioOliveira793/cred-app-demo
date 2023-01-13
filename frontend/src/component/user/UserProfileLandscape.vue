@@ -48,7 +48,7 @@ defineProps<UserProfileProps>();
 	width: 2em;
 	height: 2em;
 	object-fit: cover;
-	border-radius: 999999px;
+	border-radius: var(--full-border-radius);
 	aspect-ratio: 1 / 1;
 }
 
