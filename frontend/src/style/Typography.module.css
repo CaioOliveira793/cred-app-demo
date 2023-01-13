@@ -201,3 +201,13 @@
 	line-height: calc(var(--line-height) * 1.05);
 	letter-spacing: var(--letter-spacing-normal);
 }
+
+.helper_text {
+	composes: caption;
+	color: var(--text-color-2);
+}
+
+.error_message {
+	composes: caption;
+	color: var(--failure-color);
+}

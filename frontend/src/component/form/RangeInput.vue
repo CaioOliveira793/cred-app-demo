@@ -1,31 +1,49 @@
 <script setup lang="ts">
+import TypographyStyle from '@/style/Typography.module.css';
+import InputStyle from '@/style/form/Input.module.css';
+import InputLabel from '@/component/form/InputLabel.vue';
 import { nanoid } from 'nanoid';
 
 interface RangeInputProps {
 	id?: string;
+	label?: string;
+	asterisk?: boolean;
+
+	modelValue?: number;
 	min: number;
 	max: number;
 	step: number;
+	required?: boolean;
 
-	label?: string;
-	helperText?: string;
 	size?: 'small' | 'medium' | 'large';
 	color?: 'primary' | 'info' | 'success' | 'warning' | 'error';
 }
 
 // TODO: add color
-// TODO: add states: disabled, focus, active, hover
+// TODO: add states: disabled, focus, active, hover, invalid
+// TODO: add thumb tooltip with current value
+
+defineEmits(['update:modelValue']);
 
 withDefaults(defineProps<RangeInputProps>(), {
 	id: nanoid(),
 	size: 'medium',
 	color: 'primary',
+	required: false,
 });
+
+function transformInput(event: Event): number {
+	const target = event.target as HTMLInputElement | null;
+	return Number.parseInt(target?.value ?? '');
+}
 </script>
 
 <template>
-	<div :class="$style.input_wrapper">
-		<label :for="id" v-if="label">{{ label }}</label>
+	<div :class="[InputStyle.wrapper, $attrs.class]">
+		<InputLabel :for="id" v-if="label" :label="label" :asterisk="asterisk || required" />
+		<p v-if="$slots.description" :class="TypographyStyle.helper_text">
+			<slot name="description" />
+		</p>
 		<input
 			type="range"
 			:class="$style.range_input"
@@ -35,19 +53,21 @@ withDefaults(defineProps<RangeInputProps>(), {
 			:min="min"
 			:max="max"
 			:step="step"
+			:required="required"
+			:value="modelValue"
+			@input="$emit('update:modelValue', transformInput($event))"
 			v-bind="$attrs"
 		/>
-		<p>{{ helperText }}</p>
+		<p v-if="$slots.helperText" :class="TypographyStyle.helper_text">
+			<slot name="helperText" />
+		</p>
+		<p v-if="$slots.errorMessage" role="alert" :class="TypographyStyle.error_message">
+			<slot name="errorMessage" />
+		</p>
 	</div>
 </template>
 
 <style module>
-.input_wrapper {
-	display: flex;
-	flex-flow: column nowrap;
-	gap: var(--spacing-unit);
-}
-
 .range_input {
 	width: 100%;
 }
