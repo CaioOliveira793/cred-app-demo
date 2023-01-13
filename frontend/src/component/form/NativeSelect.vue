@@ -21,8 +21,11 @@ export interface NativeSelectProps {
 	focused?: boolean;
 	disabled?: boolean;
 
+	modelValue?: string;
 	options: NativeSelectOption[];
 }
+
+defineEmits(['update:modelValue']);
 
 withDefaults(defineProps<NativeSelectProps>(), {
 	id: nanoid(),
@@ -31,6 +34,11 @@ withDefaults(defineProps<NativeSelectProps>(), {
 	invalid: false,
 	disabled: false,
 });
+
+function selectInput(event: Event): string | null {
+	const target = event.target as HTMLSelectElement | null;
+	return target?.value ?? null;
+}
 </script>
 
 <template>
@@ -45,6 +53,8 @@ withDefaults(defineProps<NativeSelectProps>(), {
 			:disabled="disabled"
 			:focused="focused ? '' : null"
 			:class="[InputStyle.input, InputStyle[variant], InputStyle[size], $style.select]"
+			:value="modelValue"
+			@input="$emit('update:modelValue', selectInput($event))"
 			v-bind="$attrs"
 		>
 			<option v-for="option in options" :key="option.value" :value="option.value">
