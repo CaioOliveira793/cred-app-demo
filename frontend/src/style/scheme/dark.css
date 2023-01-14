@@ -4,32 +4,32 @@
 
 	/* brand color */
   --brand-color-dark: hsl(
-		var(--brand-color-hue)
+		var(--brand-color-original-hue)
 		var(--color-saturation-dark)
 		var(--color-lightness-dark)
 	);
   --hover-brand-color-dark: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dark) + var(--hover-action-color-offset))
     calc(var(--color-lightness-dark) + var(--hover-action-color-offset))
   );
   --active-brand-color-dark: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dark) + var(--active-action-color-offset))
     calc(var(--color-lightness-dark) + var(--active-action-color-offset))
   );
   --focus-brand-color-dark: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dark) + var(--focus-action-color-offset))
     calc(var(--color-lightness-dark) + var(--focus-action-color-offset))
   );
 	--select-brand-color-dark: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dark) + var(--select-action-color-offset))
     calc(var(--color-lightness-dark) + var(--select-action-color-offset))
   );
 	--disable-brand-color-dark: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dark) + var(--disable-action-color-offset))
     calc(var(--color-lightness-dark) + var(--disable-action-color-offset))
   );
@@ -170,20 +170,20 @@
 	--disable-overlay-dark: rgb(255 255 255 / var(--disable-overlay-transparency));
 
   /* text color */
-  --text-color-1-dark: hsl(var(--brand-color-hue) 15% 85%);
-  --text-color-2-dark: hsl(var(--brand-color-hue) 5% 65%);
+  --text-color-1-dark: hsl(var(--brand-color-original-hue) 15% 85%);
+  --text-color-2-dark: hsl(var(--brand-color-original-hue) 5% 65%);
   --text-link-color-dark: hsl(225 80% 85%);
 
   /* surface color */
-  --surface-color-1-dark: hsl(var(--brand-color-hue) 10% 10%);
-  --surface-color-2-dark: hsl(var(--brand-color-hue) 10% 15%);
-  --surface-color-3-dark: hsl(var(--brand-color-hue) 5% 20%);
-  --surface-color-4-dark: hsl(var(--brand-color-hue) 5% 25%);
+  --surface-color-1-dark: hsl(var(--brand-color-original-hue) 10% 10%);
+  --surface-color-2-dark: hsl(var(--brand-color-original-hue) 10% 15%);
+  --surface-color-3-dark: hsl(var(--brand-color-original-hue) 5% 20%);
+  --surface-color-4-dark: hsl(var(--brand-color-original-hue) 5% 25%);
   --surface-disable-color-dark: #707070;
 
   /* elevation */
-  --border-color-dark: hsl(var(--brand-color-hue) 10% 40%);
-  --shadow-color-hsl-dark: var(--brand-color-hue) 70% 1%;
+  --border-color-dark: hsl(var(--brand-color-original-hue) 10% 40%);
+  --shadow-color-hsl-dark: var(--brand-color-original-hue) 70% 1%;
   --shadow-strength-dark: .2;
 }
 

@@ -20,9 +20,18 @@ export const LIGHT_COLOR_SCHEME: ColorScheme = 'light';
 export const COLOR_SCHEME_LIST: ColorScheme[] = ['light', 'dark', 'dim'];
 
 export const COLOR_SCHEME_HTML_ATTRIBUTE = 'color-scheme';
-export const THEME_COLOR_HTML_ATTRIBUTE = 'theme-color';
 
 export const COLOR_SCHEME_STORAGE_KEY = makeAppKey('color-scheme');
+
+export const THEME_COLOR_HTML_ATTRIBUTE = 'theme-color';
+export const THEME_COLOR_CSS_VARIABLE = '--brand-color';
+
+export const ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE = '--brand-color-original-hue';
+export const ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE = '--brand-color-original-saturation';
+export const ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE = '--brand-color-original-lightness';
+export const ORIGINAL_THEME_COLOR_CSS_VARIABLE = '--brand-color-original';
+
+export const THEME_COLOR_STORAGE_KEY = makeAppKey('theme-color');
 
 // ---
 

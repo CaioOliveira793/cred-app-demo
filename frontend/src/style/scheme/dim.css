@@ -4,32 +4,32 @@
 
 	/* brand color */
   --brand-color-dim: hsl(
-		var(--brand-color-hue)
+		var(--brand-color-original-hue)
 		var(--color-saturation-dim)
 		var(--color-lightness-dim)
 	);
   --hover-brand-color-dim: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dim) + var(--hover-action-color-offset))
     calc(var(--color-lightness-dim) + var(--hover-action-color-offset))
   );
   --active-brand-color-dim: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dim) + var(--active-action-color-offset))
     calc(var(--color-lightness-dim) + var(--active-action-color-offset))
   );
   --focus-brand-color-dim: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dim) + var(--focus-action-color-offset))
     calc(var(--color-lightness-dim) + var(--focus-action-color-offset))
   );
 	--select-brand-color-dim: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dim) + var(--select-action-color-offset))
     calc(var(--color-lightness-dim) + var(--select-action-color-offset))
   );
 	--disable-brand-color-dim: hsl(
-    var(--brand-color-hue)
+    var(--brand-color-original-hue)
     calc(var(--color-saturation-dim) + var(--disable-action-color-offset))
     calc(var(--color-lightness-dim) + var(--disable-action-color-offset))
   );
@@ -170,20 +170,20 @@
 	--disable-overlay-dim: rgb(255 255 255 / var(--disable-overlay-transparency));
 
 	/* text color */
-  --text-color-1-dim: hsl(var(--brand-color-hue) 15% 75%);
-  --text-color-2-dim: hsl(var(--brand-color-hue) 10% 61%);
+  --text-color-1-dim: hsl(var(--brand-color-original-hue) 15% 75%);
+  --text-color-2-dim: hsl(var(--brand-color-original-hue) 10% 61%);
   --text-link-color-dim: hsl(214 82% 81%);
 
 	/* surface color */
-  --surface-color-1-dim: hsl(var(--brand-color-hue) 10% 20%);
-  --surface-color-2-dim: hsl(var(--brand-color-hue) 10% 25%);
-  --surface-color-3-dim: hsl(var(--brand-color-hue) 5% 30%);
-  --surface-color-4-dim: hsl(var(--brand-color-hue) 5% 35%);
+  --surface-color-1-dim: hsl(var(--brand-color-original-hue) 10% 20%);
+  --surface-color-2-dim: hsl(var(--brand-color-original-hue) 10% 25%);
+  --surface-color-3-dim: hsl(var(--brand-color-original-hue) 5% 30%);
+  --surface-color-4-dim: hsl(var(--brand-color-original-hue) 5% 35%);
 	--surface-disable-color-dim: #707070;
 
   /* elevation */
-  --border-color-dim: hsl(var(--brand-color-hue) 10% 50%);
-  --shadow-color-hsl-dim: var(--brand-color-hue) 40% 5%;
+  --border-color-dim: hsl(var(--brand-color-original-hue) 10% 50%);
+  --shadow-color-hsl-dim: var(--brand-color-original-hue) 40% 5%;
   --shadow-strength-dim: .15;
 }
 

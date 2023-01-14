@@ -90,10 +90,10 @@
 	--active-action-color-offset: -5%;
 
   /* brand */
-  --brand-color-hue: 30;
-  --brand-color-saturation: 96%;
-  --brand-color-lightness: 51%;
-	--brand-color-original: hsl(var(--brand-color-hue) var(--brand-color-saturation) var(--brand-color-lightness));
+  --brand-color-original-hue: 30;
+  --brand-color-original-saturation: 96%;
+  --brand-color-original-lightness: 51%;
+	--brand-color-original: hsl(var(--brand-color-original-hue) var(--brand-color-original-saturation) var(--brand-color-original-lightness));
 
   /* state color hue */
   --info-color-hue: 203;
