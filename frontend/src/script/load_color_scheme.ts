@@ -1,26 +1,22 @@
 import {
 	applyColorScheme,
-	applyComputedThemeColor,
+	applyThemeColor,
 	getColorScheme,
 	getColorSchemeMetaElement,
-	getComputedThemeColor,
-	getThemeColorMetaElement,
+	getThemeColor,
 	persistColorScheme,
-	persistOriginalThemeColor,
+	persistThemeColor,
 } from '@/function/StyleModule';
 
 function loadAppTheme() {
 	const colorSchemeMeta = getColorSchemeMetaElement();
 	const colorScheme = getColorScheme(colorSchemeMeta);
-
 	persistColorScheme(colorScheme);
 	applyColorScheme(colorScheme, colorSchemeMeta);
 
-	const themeColorMeta = getThemeColorMetaElement();
-	const themeColor = getComputedThemeColor();
-
-	persistOriginalThemeColor(themeColor);
-	applyComputedThemeColor(themeColor, themeColorMeta);
+	const themeColor = getThemeColor();
+	persistThemeColor(themeColor);
+	applyThemeColor(themeColor);
 }
 
 globalThis.window.addEventListener('load', loadAppTheme);

@@ -128,13 +128,14 @@ export function applyColorScheme(colorScheme: ColorScheme, metaElement: HTMLMeta
 
 // # theme-color
 
-function createThemeColorMetaElement(): HTMLMetaElement {
-	const meta = globalThis.document.createElement('meta');
-	meta.name = THEME_COLOR_HTML_ATTRIBUTE;
-	meta.content = '';
-	return globalThis.document.head.appendChild(meta);
-}
-
+/**
+ * Return the theme color meta element.
+ *
+ * The meta element is selected from the document head, when not present, a meta element is created
+ * and appended in the head element.
+ *
+ * @returns theme-color meta element
+ */
 export function getThemeColorMetaElement(): HTMLMetaElement {
 	return (
 		globalThis.document.head.querySelector(`meta[name="${THEME_COLOR_HTML_ATTRIBUTE}"]`) ??
@@ -142,7 +143,25 @@ export function getThemeColorMetaElement(): HTMLMetaElement {
 	);
 }
 
-export function getComputedThemeColor(): ColorHSLA {
+/**
+ * Create a theme-color meta element
+ *
+ * @returns `<meta name="theme-color" content="">`
+ */
+function createThemeColorMetaElement(): HTMLMetaElement {
+	const meta = globalThis.document.createElement('meta');
+	meta.name = THEME_COLOR_HTML_ATTRIBUTE;
+	meta.content = '';
+	return globalThis.document.head.appendChild(meta);
+}
+
+/**
+ * Return a mixed theme color with the current color scheme from the app styles
+ *
+ * @throws in case the loaded mixed theme color css variable is invalid or not present
+ * @returns theme color mixed with current color scheme
+ */
+export function getMixedThemeColor(): ColorHSLA {
 	const styles = getComputedStyle(globalThis.window.document.documentElement);
 
 	console.log(THEME_COLOR_CSS_VARIABLE, styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
@@ -150,55 +169,55 @@ export function getComputedThemeColor(): ColorHSLA {
 	const themeColor = parseCSShsl(styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
 	if (themeColor === null) {
 		throw new Error(
-			`Invalid theme color styles loaded from css property ${THEME_COLOR_CSS_VARIABLE}`
+			`Invalid mixed theme color loaded from css property "${THEME_COLOR_CSS_VARIABLE}"`
 		);
 	}
 
 	return themeColor;
 }
 
-export function applyComputedThemeColor(themeColor: ColorHSLA, metaElement: HTMLMetaElement) {
-	const color = CSShsl(themeColor);
-	globalThis.document.documentElement.setAttribute(THEME_COLOR_HTML_ATTRIBUTE, color);
-	metaElement.content = color;
-}
-
-export function persistOriginalThemeColor(themeColor: ColorHSLA) {
+export function persistThemeColor(themeColor: ColorHSLA) {
 	globalThis.localStorage.setItem(THEME_COLOR_STORAGE_KEY, CSShsl(themeColor));
 }
 
-export function persistedOriginalThemeColor() {
+export function persistedThemeColor(): ColorHSLA | null {
 	const value = globalThis.localStorage.getItem(THEME_COLOR_STORAGE_KEY);
-	if (value === null) {
-		return null;
-	}
-
-	return parseCSShsl(value);
+	return value ? parseCSShsl(value) : null;
 }
 
-function originalThemeColorStyles(): ColorHSLA {
-	const styles = getComputedStyle(globalThis.document.documentElement);
+export function getThemeColor(): ColorHSLA {
+	return persistedThemeColor() ?? currentThemeColor();
+}
 
-	console.log(
-		ORIGINAL_THEME_COLOR_CSS_VARIABLE,
-		styles.getPropertyValue(ORIGINAL_THEME_COLOR_CSS_VARIABLE)
-	);
+/**
+ * Return the current theme color from the app styles
+ *
+ * @throws in case the loaded theme color css variable is invalid or not present
+ * @returns current theme color
+ */
+function currentThemeColor(): ColorHSLA {
+	const styles = getComputedStyle(globalThis.document.documentElement);
 
 	const themeColor = parseCSShsl(styles.getPropertyValue(ORIGINAL_THEME_COLOR_CSS_VARIABLE));
 	if (themeColor === null) {
 		throw new Error(
-			`Invalid original theme color styles loaded from css property ${ORIGINAL_THEME_COLOR_CSS_VARIABLE}`
+			`Invalid theme color loaded from css property "${ORIGINAL_THEME_COLOR_CSS_VARIABLE}"`
 		);
 	}
 
 	return themeColor;
 }
 
-export function getOriginalThemeColor(): ColorHSLA {
-	return persistedOriginalThemeColor() ?? originalThemeColorStyles();
-}
-
-export function applyOriginalThemeColor(themeColor: ColorHSLA) {
+/**
+ * Apply app theme color, returning the theme color mixed with the current color scheme.
+ *
+ * @param themeColor theme color
+ * @returns theme color mixed with current color scheme
+ */
+export function applyThemeColor(
+	themeColor: ColorHSLA,
+	themeColorMeta: HTMLMetaElement = getThemeColorMetaElement()
+): ColorHSLA {
 	globalThis.document.documentElement.style.setProperty(
 		ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE,
 		themeColor.hue.toString()
@@ -211,4 +230,17 @@ export function applyOriginalThemeColor(themeColor: ColorHSLA) {
 		ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
 		themeColor.lightness.toString()
 	);
+
+	const mixed = getMixedThemeColor();
+	applyMixedThemeColor(mixed, themeColorMeta);
+	return mixed;
+}
+
+function applyMixedThemeColor(
+	themeColor: ColorHSLA,
+	metaElement: HTMLMetaElement = getThemeColorMetaElement()
+) {
+	const color = CSShsl(themeColor);
+	globalThis.document.documentElement.setAttribute(THEME_COLOR_HTML_ATTRIBUTE, color);
+	metaElement.content = color;
 }
