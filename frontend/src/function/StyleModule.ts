@@ -12,6 +12,7 @@ import {
 	ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE,
 	ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
 	ORIGINAL_THEME_COLOR_CSS_VARIABLE,
+	ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE,
 } from '@/config/constant';
 
 // # CSS Unit
@@ -32,7 +33,7 @@ export function CSShsl(color: ColorHSLA): string {
 }
 
 const HSLA_REGEX =
-	/hsla?\(\s*(?<h>\d+)(deg)?\s*(?<s>[\d.]+)%\s*(?<l>[\d.]+)%\s*(\/\s*(?<a>\d+)%)?\)/;
+	/hsla?\(\s*(?<h>\d+)(deg)?\s*(?<s>[\d.]+)%\s*(?<l>[\d.]+)%\s*(\/\s*(?<a>\d+)%)?\s*\)/;
 
 export function parseCSShsl(color: string): ColorHSLA | null {
 	if (typeof color !== 'string') {
@@ -164,8 +165,6 @@ function createThemeColorMetaElement(): HTMLMetaElement {
 export function getMixedThemeColor(): ColorHSLA {
 	const styles = getComputedStyle(globalThis.window.document.documentElement);
 
-	console.log(THEME_COLOR_CSS_VARIABLE, styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
-
 	const themeColor = parseCSShsl(styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
 	if (themeColor === null) {
 		throw new Error(
@@ -229,6 +228,10 @@ export function applyThemeColor(
 	globalThis.document.documentElement.style.setProperty(
 		ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
 		themeColor.lightness.toString()
+	);
+	globalThis.document.documentElement.style.setProperty(
+		ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE,
+		themeColor.alpha.toString()
 	);
 
 	const mixed = getMixedThemeColor();

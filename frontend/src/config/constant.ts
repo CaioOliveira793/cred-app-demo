@@ -29,6 +29,7 @@ export const THEME_COLOR_CSS_VARIABLE = '--brand-color';
 export const ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE = '--brand-color-original-hue';
 export const ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE = '--brand-color-original-saturation';
 export const ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE = '--brand-color-original-lightness';
+export const ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE = '--brand-color-original-alpha';
 export const ORIGINAL_THEME_COLOR_CSS_VARIABLE = '--brand-color-original';
 
 export const THEME_COLOR_STORAGE_KEY = makeAppKey('theme-color');

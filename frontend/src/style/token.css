@@ -93,7 +93,13 @@
   --brand-color-original-hue: 30;
   --brand-color-original-saturation: 96%;
   --brand-color-original-lightness: 51%;
-	--brand-color-original: hsl(var(--brand-color-original-hue) var(--brand-color-original-saturation) var(--brand-color-original-lightness));
+  --brand-color-original-alpha: 0%;
+	--brand-color-original: hsl(
+		var(--brand-color-original-hue)
+		var(--brand-color-original-saturation)
+		var(--brand-color-original-lightness)
+		/ var(--brand-color-original-alpha)
+	);
 
   /* state color hue */
   --info-color-hue: 203;
