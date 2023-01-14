@@ -12,6 +12,7 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: ^8.22.0
   eslint-plugin-vue: ^9.3.0
+  nanoid: ^4.0.0
   normalize.css: ^8.0.1
   npm-run-all: ^4.1.5
   postcss: ^8.4.20
@@ -27,6 +28,7 @@ specifiers:
 
 dependencies:
   '@iconify-json/fa6-solid': 1.1.10
+  nanoid: 4.0.0
   normalize.css: 8.0.1
   vue: 3.2.45
   vue-router: 4.1.6_vue@3.2.45
@@ -2224,6 +2226,12 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  /nanoid/4.0.0:
+    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /natural-compare-lite/1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
