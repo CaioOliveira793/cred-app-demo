@@ -1,12 +1,26 @@
 import {
 	applyColorScheme,
+	applyComputedThemeColor,
 	getColorScheme,
 	getColorSchemeMetaElement,
+	getComputedThemeColor,
+	getThemeColorMetaElement,
 	persistColorScheme,
-} from '@/helper/StyleHelper';
+	persistOriginalThemeColor,
+} from '@/function/StyleModule';
 
-const metaElement = getColorSchemeMetaElement();
-const colorScheme = getColorScheme(metaElement);
+function loadAppTheme() {
+	const colorSchemeMeta = getColorSchemeMetaElement();
+	const colorScheme = getColorScheme(colorSchemeMeta);
 
-persistColorScheme(colorScheme);
-applyColorScheme(colorScheme, metaElement);
+	persistColorScheme(colorScheme);
+	applyColorScheme(colorScheme, colorSchemeMeta);
+
+	const themeColorMeta = getThemeColorMetaElement();
+	const themeColor = getComputedThemeColor();
+
+	persistOriginalThemeColor(themeColor);
+	applyComputedThemeColor(themeColor, themeColorMeta);
+}
+
+globalThis.window.addEventListener('load', loadAppTheme);

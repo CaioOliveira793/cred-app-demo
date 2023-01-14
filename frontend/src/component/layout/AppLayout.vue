@@ -6,7 +6,7 @@ import {
 	RIGHT_SIDEBAR_ELEMENT_ID,
 	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
-import { numberToCSSpx } from '@/helper/StyleHelper';
+import { CSSpx } from '@/function/StyleModule';
 import type { ChangeClientRectRequestEvent } from '@/event/LayoutEvent';
 
 type SidebarPosition = 'left' | 'right';
@@ -14,10 +14,10 @@ type SidebarPosition = 'left' | 'right';
 function handleSidebarWidthChange(position: SidebarPosition, event: ChangeClientRectRequestEvent) {
 	switch (position) {
 		case 'left':
-			layout.left_sidebar_width = numberToCSSpx(event.expected.width);
+			layout.left_sidebar_width = CSSpx(event.expected.width);
 			break;
 		case 'right':
-			layout.right_sidebar_width = numberToCSSpx(event.expected.width);
+			layout.right_sidebar_width = CSSpx(event.expected.width);
 			break;
 	}
 }

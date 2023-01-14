@@ -6,6 +6,12 @@
     "**/*.vue"
   ],
   "compilerOptions": {
+    "target": "ES2021",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": "./",
     "paths": {
       "@/*": [
