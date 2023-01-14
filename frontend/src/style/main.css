@@ -64,6 +64,10 @@ svg {
 	font-size: inherit;
 }
 
+:root {
+	accent-color: var(--brand-color);
+}
+
 body {
 	color: var(--text-color-1);
 	font-family: var(--font-family);
