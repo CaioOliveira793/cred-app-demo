@@ -57,9 +57,11 @@ function selectInput(event: Event): string | null {
 			@input="$emit('update:modelValue', selectInput($event))"
 			v-bind="$attrs"
 		>
-			<option v-for="option in options" :key="option.value" :value="option.value">
-				{{ option.label }}
-			</option>
+			<slot name="option" :options="options">
+				<option v-for="option in options" :key="option.value" :value="option.value">
+					{{ option.label }}
+				</option>
+			</slot>
 		</select>
 		<p v-if="$slots.helperText" :class="TypographyStyle.helper_text">
 			<slot name="helperText" />

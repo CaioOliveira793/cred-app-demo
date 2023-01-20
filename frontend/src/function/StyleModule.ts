@@ -6,13 +6,13 @@ import {
 	LIGHT_COLOR_SCHEME,
 	THEME_COLOR_HTML_ATTRIBUTE,
 	THEME_COLOR_STORAGE_KEY,
-	THEME_COLOR_CSS_VARIABLE,
+	THEME_COLOR_MIXED_CSS_VARIABLE,
 	type ColorScheme,
-	ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE,
-	ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE,
-	ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
-	ORIGINAL_THEME_COLOR_CSS_VARIABLE,
-	ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE,
+	THEME_COLOR_HUE_CSS_VARIABLE,
+	THEME_COLOR_SATURATION_CSS_VARIABLE,
+	THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
+	THEME_COLOR_CSS_VARIABLE,
+	THEME_COLOR_ALPHA_CSS_VARIABLE,
 } from '@/config/constant';
 
 // # CSS Unit
@@ -48,7 +48,7 @@ export function parseCSShsl(color: string): ColorHSLA | null {
 			hue: Number.parseFloat(h),
 			saturation: Number.parseFloat(s),
 			lightness: Number.parseFloat(l),
-			alpha: a ? Number.parseFloat(a) : 0,
+			alpha: a ? Number.parseFloat(a) : 100,
 		};
 	}
 
@@ -62,6 +62,13 @@ export function compareHSL(lhs: ColorHSLA, rhs: ColorHSLA): boolean {
 		lhs.lightness === rhs.lightness &&
 		lhs.alpha === rhs.alpha
 	);
+}
+
+export function copyHSL(dest: ColorHSLA, src: ColorHSLA): void {
+	dest.hue = src.hue;
+	dest.saturation = src.saturation;
+	dest.lightness = src.lightness;
+	dest.alpha = src.alpha;
 }
 
 // # color-scheme
@@ -165,10 +172,10 @@ function createThemeColorMetaElement(): HTMLMetaElement {
 export function getMixedThemeColor(): ColorHSLA {
 	const styles = getComputedStyle(globalThis.window.document.documentElement);
 
-	const themeColor = parseCSShsl(styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
+	const themeColor = parseCSShsl(styles.getPropertyValue(THEME_COLOR_MIXED_CSS_VARIABLE));
 	if (themeColor === null) {
 		throw new Error(
-			`Invalid mixed theme color loaded from css property "${THEME_COLOR_CSS_VARIABLE}"`
+			`Invalid mixed theme color loaded from css property "${THEME_COLOR_MIXED_CSS_VARIABLE}"`
 		);
 	}
 
@@ -197,11 +204,9 @@ export function getThemeColor(): ColorHSLA {
 function currentThemeColor(): ColorHSLA {
 	const styles = getComputedStyle(globalThis.document.documentElement);
 
-	const themeColor = parseCSShsl(styles.getPropertyValue(ORIGINAL_THEME_COLOR_CSS_VARIABLE));
+	const themeColor = parseCSShsl(styles.getPropertyValue(THEME_COLOR_CSS_VARIABLE));
 	if (themeColor === null) {
-		throw new Error(
-			`Invalid theme color loaded from css property "${ORIGINAL_THEME_COLOR_CSS_VARIABLE}"`
-		);
+		throw new Error(`Invalid theme color loaded from css property "${THEME_COLOR_CSS_VARIABLE}"`);
 	}
 
 	return themeColor;
@@ -218,19 +223,19 @@ export function applyThemeColor(
 	themeColorMeta: HTMLMetaElement = getThemeColorMetaElement()
 ): ColorHSLA {
 	globalThis.document.documentElement.style.setProperty(
-		ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE,
+		THEME_COLOR_HUE_CSS_VARIABLE,
 		themeColor.hue.toString()
 	);
 	globalThis.document.documentElement.style.setProperty(
-		ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE,
+		THEME_COLOR_SATURATION_CSS_VARIABLE,
 		themeColor.saturation.toString()
 	);
 	globalThis.document.documentElement.style.setProperty(
-		ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
+		THEME_COLOR_LIGHTNESS_CSS_VARIABLE,
 		themeColor.lightness.toString()
 	);
 	globalThis.document.documentElement.style.setProperty(
-		ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE,
+		THEME_COLOR_ALPHA_CSS_VARIABLE,
 		themeColor.alpha.toString()
 	);
 

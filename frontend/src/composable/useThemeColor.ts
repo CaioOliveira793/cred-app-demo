@@ -4,6 +4,7 @@ import {
 	getThemeColor,
 	getMixedThemeColor,
 	type ColorHSLA,
+	copyHSL,
 } from '@/function/StyleModule';
 
 export interface UseThemeColorReturn {
@@ -28,11 +29,7 @@ export function useThemeColor(): UseThemeColorReturn {
 
 	watch(themeColor, (themeColor: ColorHSLA) => {
 		const mixed = applyThemeColor(themeColor);
-
-		mixedThemeColor.hue = mixed.hue;
-		mixedThemeColor.saturation = mixed.saturation;
-		mixedThemeColor.lightness = mixed.lightness;
-		mixedThemeColor.alpha = mixed.alpha;
+		copyHSL(mixedThemeColor, mixed);
 	});
 
 	return { themeColor, mixedThemeColor };

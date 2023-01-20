@@ -12,6 +12,8 @@ function makeAppKey(key: string): string {
 	return import.meta.env.APP_NAME + '.' + key;
 }
 
+// # Styles (color-scheme and theme-color)
+
 export type ColorScheme = 'light' | 'dark' | 'dim';
 
 export const DEFAULT_COLOR_SCHEME: ColorScheme = 'light';
@@ -24,17 +26,17 @@ export const COLOR_SCHEME_HTML_ATTRIBUTE = 'color-scheme';
 export const COLOR_SCHEME_STORAGE_KEY = makeAppKey('color-scheme');
 
 export const THEME_COLOR_HTML_ATTRIBUTE = 'theme-color';
-export const THEME_COLOR_CSS_VARIABLE = '--brand-color';
+export const THEME_COLOR_MIXED_CSS_VARIABLE = '--brand-color';
 
-export const ORIGINAL_THEME_COLOR_HUE_CSS_VARIABLE = '--brand-color-original-hue';
-export const ORIGINAL_THEME_COLOR_SATURATION_CSS_VARIABLE = '--brand-color-original-saturation';
-export const ORIGINAL_THEME_COLOR_LIGHTNESS_CSS_VARIABLE = '--brand-color-original-lightness';
-export const ORIGINAL_THEME_COLOR_ALPHA_CSS_VARIABLE = '--brand-color-original-alpha';
-export const ORIGINAL_THEME_COLOR_CSS_VARIABLE = '--brand-color-original';
+export const THEME_COLOR_HUE_CSS_VARIABLE = '--brand-color-original-hue';
+export const THEME_COLOR_SATURATION_CSS_VARIABLE = '--brand-color-original-saturation';
+export const THEME_COLOR_LIGHTNESS_CSS_VARIABLE = '--brand-color-original-lightness';
+export const THEME_COLOR_ALPHA_CSS_VARIABLE = '--brand-color-original-alpha';
+export const THEME_COLOR_CSS_VARIABLE = '--brand-color-original';
 
 export const THEME_COLOR_STORAGE_KEY = makeAppKey('theme-color');
 
-// ---
+// # Element ID
 
 /** Root element of the app */
 export const APP_ROOT_ELEMENT_ID = 'app';
@@ -53,3 +55,12 @@ export const LEFT_SIDEBAR_ELEMENT_ID = 'left_sidebar';
 
 /** Right sidebar element. */
 export const RIGHT_SIDEBAR_ELEMENT_ID = 'right_sidebar';
+
+// # Page
+
+export const LOGIN_PAGE_PATH = '/login';
+
+// # API
+
+/** REST API hostname */
+export const API_HOSTNAME = import.meta.env.API_HOSTNAME;

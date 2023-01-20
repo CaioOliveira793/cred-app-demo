@@ -1,3 +1,4 @@
+import type { Component } from 'vue';
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import {
 	APP_CONTENT_ELEMENT_ID,
@@ -6,26 +7,38 @@ import {
 	TOP_NAVIGATION_ELEMENT_ID,
 } from './constant';
 
-const AppLayoutRecord: RouteRecordRaw = {
-	path: '',
-	name: 'AppLayout',
-	components: {
-		[TOP_NAVIGATION_ELEMENT_ID]: () => import('@/component/navigation/TopNavigation.vue'),
-		[LEFT_SIDEBAR_ELEMENT_ID]: () => import('@/component/navigation/SidebarNavigation.vue'),
-		[MAIN_CONTENT_ELEMENT_ID]: () => import('@/page/HomePage.vue'),
-	},
-	props: true,
-};
+const AppLayoutComponent = () => import('@/component/layout/AppLayout.vue');
+const LeftSidebarComponent = () => import('@/component/navigation/SidebarNavigation.vue');
+const TopNavigationComponent = () => import('@/component/navigation/TopNavigation.vue');
+
+function makeAppLayoutRecord(mainComponent: () => Component): RouteRecordRaw {
+	return {
+		name: 'Layout',
+		path: '',
+		components: {
+			[TOP_NAVIGATION_ELEMENT_ID]: TopNavigationComponent,
+			[LEFT_SIDEBAR_ELEMENT_ID]: LeftSidebarComponent,
+			[MAIN_CONTENT_ELEMENT_ID]: mainComponent,
+		},
+	};
+}
 
 export const routes: readonly RouteRecordRaw[] = [
 	{
 		path: '/home',
 		name: 'Home',
-		props: true,
 		components: {
-			[APP_CONTENT_ELEMENT_ID]: () => import('@/component/layout/AppLayout.vue'),
+			[APP_CONTENT_ELEMENT_ID]: AppLayoutComponent,
 		},
-		children: [AppLayoutRecord],
+		children: [makeAppLayoutRecord(() => import('@/page/HomePage.vue'))],
+	},
+	{
+		path: '/config',
+		name: 'Config',
+		components: {
+			[APP_CONTENT_ELEMENT_ID]: AppLayoutComponent,
+		},
+		children: [makeAppLayoutRecord(() => import('@/page/UserAppConfig.vue'))],
 	},
 	{
 		path: '/:catch_all(.*)',
