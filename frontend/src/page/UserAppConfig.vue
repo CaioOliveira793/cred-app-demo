@@ -19,6 +19,7 @@ import {
 	compareHSL,
 } from '@/function/StyleModule';
 import { useUserAccount } from '@/composable/useUserAccount';
+import { usePrivatePage } from '@/composable/useAppAccess';
 
 const THEME_OPTION_LIST: NativeSelectOption[] = COLOR_SCHEME_LIST.map(theme => ({
 	label: theme,
@@ -26,6 +27,7 @@ const THEME_OPTION_LIST: NativeSelectOption[] = COLOR_SCHEME_LIST.map(theme => (
 }));
 
 const { user } = useUserAccount();
+usePrivatePage();
 
 const colorScheme = useColorScheme();
 const { themeColor, mixedThemeColor } = useThemeColor();
