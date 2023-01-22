@@ -41,3 +41,9 @@ withDefaults(defineProps<InputProps>(), {
 		<slot name="endAdornment" />
 	</div>
 </template>
+
+<script lang="ts">
+export default {
+	inheritAttrs: false,
+};
+</script>

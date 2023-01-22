@@ -58,7 +58,11 @@ export const RIGHT_SIDEBAR_ELEMENT_ID = 'right_sidebar';
 
 // # Page
 
-export const LOGIN_PAGE_PATH = '/login';
+export const enum AppPath {
+	Login = '/login',
+	Home = '/home',
+	Config = '/config',
+}
 
 // # API
 

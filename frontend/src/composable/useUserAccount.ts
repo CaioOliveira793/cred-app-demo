@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, type Ref } from 'vue';
 import { useRouter, type NavigationFailure } from 'vue-router';
-import { LOGIN_PAGE_PATH } from '@/config/constant';
+import { AppPath } from '@/config/constant';
 import type { User, UserAuthentication, UserCredential } from '@/resource/IAM';
 import { authenticateUser } from '@/service/UserService';
 
@@ -42,7 +42,7 @@ function useUserAccountComposable(): UseUserAccountReturn {
 	async function signOut(redirectPath?: string): Promise<void | NavigationFailure> {
 		user.value = null;
 		return router.push({
-			path: LOGIN_PAGE_PATH,
+			path: AppPath.Login,
 			replace: false,
 			query: { redirect_to: redirectPath },
 		});
