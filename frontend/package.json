@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@iconify-json/fa6-solid": "^1.1.10",
+    "final-form": "^4.20.8",
     "nanoid": "^4.0.0",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.29",

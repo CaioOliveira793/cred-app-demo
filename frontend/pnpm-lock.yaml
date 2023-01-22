@@ -12,6 +12,7 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: ^8.22.0
   eslint-plugin-vue: ^9.3.0
+  final-form: ^4.20.8
   nanoid: ^4.0.0
   normalize.css: ^8.0.1
   npm-run-all: ^4.1.5
@@ -29,6 +30,7 @@ specifiers:
 
 dependencies:
   '@iconify-json/fa6-solid': 1.1.10
+  final-form: 4.20.8
   nanoid: 4.0.0
   normalize.css: 8.0.1
   pinia: 2.0.29_e7lp6ggkpgyi5vqd44m2kxvk6i
@@ -335,6 +337,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@babel/runtime/7.20.7:
+    resolution: {integrity: sha512-UF0tvkUtxwAgZ5W/KrkHf0Rn0fdnLDU9ScxBrEVNUprE/MzirjK4MJUX1/BVDv00Sv8cljtukVK1aky++X1SjQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.11
+    dev: false
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -1695,6 +1704,12 @@ packages:
       to-regex-range: 5.0.1
     dev: true
 
+  /final-form/4.20.8:
+    resolution: {integrity: sha512-knyoRbK42XvZOwfElVSZEfE9licdOmgLLUfPSuxJOl0UhjYT1HiBaHZlfYnwqmvo1H9ucNGyXDHoUP0vI0474g==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+    dev: false
+
   /find-up/5.0.0:
     resolution: {integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==}
     engines: {node: '>=10'}
@@ -2554,6 +2569,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /regenerator-runtime/0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: false
 
   /regexp.prototype.flags/1.4.3:
     resolution: {integrity: sha512-fjggEOO3slI6Wvgjwflkc4NFRCTZAu5CnNfBd5qOMYhWdn67nJBBu34/TkD++eeFmd8C9r9jfXJ27+nSiRkSUA==}
