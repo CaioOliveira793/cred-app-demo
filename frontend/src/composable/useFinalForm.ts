@@ -3,7 +3,6 @@ import {
 	formSubscriptionItems,
 	type FieldConfig,
 	type FieldState,
-	type FieldSubscription,
 	type FormApi,
 	type FormSubscription,
 	type SubmissionErrors,
@@ -17,12 +16,14 @@ export type FinalSubmit<Data> = (
 	callback?: (errors?: SubmissionErrors) => void
 ) => Promise<void>;
 
-export type FinalValidate<ValidationError> = () => Promise<ValidationError | void>;
+export type FinalValidate<Data extends object, ValidationError> = (
+	values: Data
+) => Promise<ValidationError | void>;
 
 export interface UseFormInput<Data extends object, ValidationError extends object> {
 	submit: FinalSubmit<Data>;
 
-	validate?: FinalValidate<ValidationError>;
+	validate?: FinalValidate<Data, ValidationError>;
 
 	/**
 	 * The initial values of your form. These will also be used to compare against the
@@ -76,10 +77,6 @@ export function useForm<Data extends object, ValidationError extends object = {}
 	return formApi;
 }
 
-export const DefaultFieldSubscription: FieldSubscription = Object.fromEntries(
-	formSubscriptionItems.map(key => [key, true])
-);
-
 export interface FieldPropBindind {
 	checked?: boolean;
 	value?: string;
@@ -96,12 +93,14 @@ export interface FieldEventBinding {
 export interface FieldBindind {
 	event?: FieldEventBinding;
 	prop?: FieldPropBindind;
+	errors: string[];
 }
 
 export function emptyFieldBindind(): FieldBindind {
 	return {
 		event: undefined,
 		prop: undefined,
+		errors: [],
 	};
 }
 
@@ -135,7 +134,10 @@ export function fieldBinding<Input extends InputData, FieldValue extends Coerced
 		prop.value = inputValue;
 	}
 
-	return { prop, event };
+	// Since there's no generic way to type the error, lets assume it's a list of messages `string[]`
+	const errors = (state.error as string[] | undefined) ?? [];
+
+	return { prop, event, errors };
 }
 
 export interface UseFieldBinding<
@@ -179,12 +181,15 @@ export function useFieldBinding<
 	const unregister = formApi.registerField(
 		name,
 		state => {
-			const { event, prop } = fieldBinding(state as FieldState<FieldValue>, transformer);
+			const { event, prop, errors } = fieldBinding(state as FieldState<FieldValue>, transformer);
 			binding.event = event;
 			binding.prop = prop;
+			binding.errors = errors;
 		},
 		{
 			value: true,
+			error: true,
+			invalid: true,
 			touched: true,
 		},
 		fieldConfig

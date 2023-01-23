@@ -6,17 +6,21 @@ import { useForm, useFieldBinding } from '@/composable/useFinalForm';
 import { useUserAccount } from '@/composable/useUserAccount';
 import { AppPath } from '@/config/constant';
 import type { UserCredential } from '@/resource/IAM';
+import { UserCredentialSchema } from '@/validation/IAM';
+import { zodFormAdapter } from '@/validation/ZodHelper';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { authenticate } = useUserAccount();
-const formApi = useForm<UserCredential>({ submit: signIn });
+const formApi = useForm<UserCredential>({
+	submit: signIn,
+	validate: zodFormAdapter(UserCredentialSchema),
+});
 
 const email = useFieldBinding({ name: 'email', formApi, transformer: TextInputTransform });
 const password = useFieldBinding({ name: 'password', formApi, transformer: TextInputTransform });
 
 async function signIn(credential: UserCredential) {
-	console.log(credential);
 	const res = await authenticate(credential);
 	if (res instanceof Error) {
 		return;
@@ -46,7 +50,9 @@ function signInNavigation() {
 				v-bind="email.prop"
 				v-on="email.event"
 			></VInput>
+			<p v-for="message in email.errors" :key="message">{{ message }}</p>
 			<VInput type="password" required v-bind="password.prop" v-on="password.event"></VInput>
+			<p v-for="message in password.errors" :key="message">{{ message }}</p>
 			<VButton variant="contained" color="primary" size="medium" type="submit">Login</VButton>
 		</form>
 	</main>
