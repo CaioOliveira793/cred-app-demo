@@ -7,6 +7,8 @@ const FAKE_USER: User = {
 	name: 'Fake user',
 	email: 'fake.usr@cred.com',
 	phone: null,
+	image_url:
+		'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
 	last_password_change: new Date(),
 };
 

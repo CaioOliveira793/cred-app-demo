@@ -17,6 +17,7 @@ import UserTagIcon from '~icons/fa6-solid/user-tag';
 import ClipboardListIcon from '~icons/fa6-solid/clipboard-list';
 import CommentsIcon from '~icons/fa6-solid/comments';
 import GearIcon from '~icons/fa6-solid/gear';
+import { useUserAccount } from '@/composable/useUserAccount';
 
 interface NavItem {
 	path: string;
@@ -58,14 +59,8 @@ const DownNavigationItems: NavItem[] = [
 	},
 ];
 
-const user = {
-	name: 'Victoria Alexandrova',
-	email: 'vic@gmail.com',
-	image_url:
-		'https://images.unsplash.com/photo-1671041014656-1c9cbd170653?ixlib=rb-4.0.3&dl=victoria-alexandrova-ZAr6q61nVww-unsplash.jpg&w=2400&q=80&fm=jpg&crop=entropy&cs=tinysrgb',
-};
-
 const route = useRoute();
+const { user } = useUserAccount();
 
 const expanded = ref(false);
 const sidebarEl = ref<null | HTMLElement>(null);
@@ -160,7 +155,7 @@ onMounted(() => {
 			</ul>
 		</nav>
 		<hr />
-		<UserProfileLandscape :user="user" :expanded="expanded" />
+		<UserProfileLandscape v-if="user" :user="user" :expanded="expanded" />
 	</aside>
 </template>
 

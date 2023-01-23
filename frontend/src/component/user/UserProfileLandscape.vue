@@ -1,9 +1,7 @@
 <script setup lang="ts">
-interface User {
-	image_url: string;
-	name: string;
-	email: string;
-}
+import UserIcon from '~icons/fa6-solid/user';
+import type { User } from '@/resource/IAM';
+import VButton from '../form/VButton.vue';
 
 interface UserProfileProps {
 	user: User;
@@ -15,7 +13,12 @@ defineProps<UserProfileProps>();
 
 <template>
 	<div :class="{ [$style.user_profile]: true, [$style.expanded_user_profile]: expanded }">
-		<img :class="$style.user_image" :src="user.image_url" alt="user_image" />
+		<button v-if="user.image_url" type="button" :class="$style.user_image_button">
+			<img :class="$style.user_image" :src="user.image_url" alt="user_image" />
+		</button>
+		<VButton v-else variant="icon_flat" size="medium" color="current">
+			<UserIcon />
+		</VButton>
 		<div :class="$style.user_profile_info" v-show="expanded">
 			<strong :class="$style.user_name">{{ user.name }}</strong>
 			<a :href="'mailto:' + user.email" :class="$style.user_email">{{ user.email }}</a>
@@ -44,9 +47,17 @@ defineProps<UserProfileProps>();
 	flex-flow: column nowrap;
 }
 
+.user_image_button {
+	display: flex;
+	min-width: 2em;
+	max-width: fit-content;
+	background-color: transparent;
+}
+
 .user_image {
-	width: 2em;
-	height: 2em;
+	min-width: 2em;
+	min-height: 2em;
+	max-width: fit-content;
 	object-fit: cover;
 	border-radius: var(--full-border-radius);
 	aspect-ratio: 1 / 1;
