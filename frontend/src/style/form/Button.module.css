@@ -124,6 +124,20 @@
 }
 
 
+.outlined[s-color="current"], .icon_outlined[s-color="current"] {
+	--button-color: currentcolor;
+	--button-border-color: var(--button-color);
+}
+
+.contained[s-color="current"], .icon_contained[s-color="current"] {
+	--button-bg-color: currentcolor;
+}
+
+.text[s-color="current"], .icon_flat[s-color="current"] {
+	--button-color: currentcolor;
+}
+
+
 /* loading */
 .button[loading] {
 	cursor: wait;
@@ -167,6 +181,11 @@
 	--button-bg-color: var(--hover-failure-color);
 }
 
+.contained:hover[s-color="current"],
+.icon_contained:hover[s-color="current"] {
+	--button-bg-color: currentcolor;
+}
+
 
 /* :focus */
 .outlined:focus,
@@ -201,6 +220,12 @@
 	--button-bg-color: var(--focus-failure-color);
 }
 
+.contained:focus[s-color="current"],
+.icon_contained:focus[s-color="current"] {
+	--button-bg-color: currentcolor;
+}
+
+
 .outlined:focus[s-color="primary"],
 .icon_outlined:focus[s-color="primary"] {
 	--button-color: var(--focus-brand-color);
@@ -224,6 +249,11 @@
 .outlined:focus[s-color="error"],
 .icon_outlined:focus[s-color="error"] {
 	--button-color: var(--focus-failure-color);
+}
+
+.outlined:focus[s-color="current"],
+.icon_outlined:focus[s-color="current"] {
+	--button-color: currentcolor;
 }
 
 
@@ -265,6 +295,11 @@
 .contained:active[s-color="error"],
 .icon_contained:active[s-color="error"] {
 	--button-bg-color: var(--active-failure-color);
+}
+
+.contained:active[s-color="current"],
+.icon_contained:active[s-color="current"] {
+	--button-bg-color: currentcolor;
 }
 
 

@@ -9,7 +9,7 @@ export type ButtonVariant =
 	| 'icon_contained'
 	| 'icon_outlined'
 	| 'icon_flat';
-export type ButtonColor = 'primary' | 'info' | 'success' | 'warning' | 'error';
+export type ButtonColor = 'primary' | 'info' | 'success' | 'warning' | 'error' | 'current';
 export type ButtonSize = 'none' | 'small' | 'medium' | 'large';
 
 interface ButtonProps {
