@@ -64,7 +64,7 @@ function signInNavigation() {
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
+	min-height: 100vh;
 }
 
 .form_container {

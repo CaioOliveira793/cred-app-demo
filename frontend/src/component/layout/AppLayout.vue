@@ -7,20 +7,6 @@ import {
 	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
 import { CSSpx } from '@/function/StyleModule';
-import type { ChangeClientRectRequestEvent } from '@/event/LayoutEvent';
-
-type SidebarPosition = 'left' | 'right';
-
-function handleSidebarWidthChange(position: SidebarPosition, event: ChangeClientRectRequestEvent) {
-	switch (position) {
-		case 'left':
-			layout.left_sidebar_width = CSSpx(event.expected.width);
-			break;
-		case 'right':
-			layout.right_sidebar_width = CSSpx(event.expected.width);
-			break;
-	}
-}
 
 const layout = reactive({
 	top_menu_height: '0px',
@@ -30,55 +16,44 @@ const layout = reactive({
 </script>
 
 <template>
-	<div :class="$style.app_container">
-		<router-view
-			:name="TOP_NAVIGATION_ELEMENT_ID"
-			:id="TOP_NAVIGATION_ELEMENT_ID"
-			:class="$style.top_navigation"
-		/>
-
-		<div :class="$style.middle_container">
-			<router-view
-				:name="LEFT_SIDEBAR_ELEMENT_ID"
-				:id="LEFT_SIDEBAR_ELEMENT_ID"
-				:class="$style.left_sidebar"
-				@change-client-rect-request="handleSidebarWidthChange('left', $event)"
-			/>
-			<router-view
-				:name="MAIN_CONTENT_ELEMENT_ID"
-				:id="MAIN_CONTENT_ELEMENT_ID"
-				:class="$style.app_content"
-			/>
-			<router-view
-				:name="RIGHT_SIDEBAR_ELEMENT_ID"
-				:id="RIGHT_SIDEBAR_ELEMENT_ID"
-				@change-client-rect-request="handleSidebarWidthChange('right', $event)"
-			/>
-		</div>
-	</div>
+	<router-view
+		:name="TOP_NAVIGATION_ELEMENT_ID"
+		:id="TOP_NAVIGATION_ELEMENT_ID"
+		:class="$style.top_navigation"
+		@change-client-rect-request="layout.top_menu_height = CSSpx($event.expected.height)"
+	/>
+	<router-view
+		:name="LEFT_SIDEBAR_ELEMENT_ID"
+		:id="LEFT_SIDEBAR_ELEMENT_ID"
+		:class="$style.left_sidebar"
+		@change-client-rect-request="layout.left_sidebar_width = CSSpx($event.expected.width)"
+	/>
+	<router-view
+		:name="MAIN_CONTENT_ELEMENT_ID"
+		:id="MAIN_CONTENT_ELEMENT_ID"
+		:class="$style.app_content"
+	/>
+	<router-view
+		:name="RIGHT_SIDEBAR_ELEMENT_ID"
+		:id="RIGHT_SIDEBAR_ELEMENT_ID"
+		@change-client-rect-request="layout.right_sidebar_width = CSSpx($event.expected.width)"
+	/>
 </template>
 
-<style module>
-.app_container {
+<style>
+#app {
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: stretch;
-	height: 100%;
+	min-height: 100vh;
 }
+</style>
 
-.middle_container {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	height: 100%;
-}
-
+<style module>
 .top_navigation {
 	position: fixed;
-	max-height: v-bind('layout.top_menu_height');
-	height: 100%;
+	height: v-bind('layout.top_menu_height');
 	width: 100%;
 }
 
@@ -104,7 +79,7 @@ const layout = reactive({
 	flex-direction: column;
 	padding: calc(var(--padding-unit) * 4);
 	gap: calc(var(--padding-unit) * 4);
-	width: 100%;
+	width: calc(100% - v-bind('layout.left_sidebar_width') - v-bind('layout.right_sidebar_width'));
 	min-height: 100%;
 
 	margin-top: v-bind('layout.top_menu_height');

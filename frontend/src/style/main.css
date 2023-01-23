@@ -68,15 +68,11 @@ svg {
 	accent-color: var(--brand-color);
 }
 
-body {
+body, #app {
 	color: var(--text-color-1);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-regular);
 	font-size: calc(var(--font-size) * 0.875);
-	height: 100vh;
+	min-height: 100vh;
 	background-color: var(--surface-color-1);
-}
-
-#app {
-	height: 100vh;
 }
