@@ -3,7 +3,7 @@ import { ref, onMounted, type Component } from 'vue';
 import { useRoute } from 'vue-router';
 import NavigationItem from '@/component/navigation/NavigationItem.vue';
 import AppLogo from '@/component/AppLogo.vue';
-import UserProfileLandscape from '@/component/user/UserProfileLandscape.vue';
+import UserProfile from '@/component/user/UserProfile.vue';
 import VButton from '@/component/form/VButton.vue';
 import {
 	ChangeClientRectRequestEvent,
@@ -155,7 +155,7 @@ onMounted(() => {
 			</ul>
 		</nav>
 		<hr />
-		<UserProfileLandscape v-if="user" :user="user" :expanded="expanded" />
+		<UserProfile :user="user" :expanded="expanded" />
 	</aside>
 </template>
 

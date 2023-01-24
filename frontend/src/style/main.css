@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 }
 
-fieldset, ul, ol, h1, h2, h3, h4, h5, h6, p, button {
+fieldset, ul, ol, h1, h2, h3, h4, h5, h6, p, pre, button {
 	border: 0;
 	padding: 0;
 	margin: 0;
@@ -58,6 +58,11 @@ a:link, a:visited, a:active {
 a:hover {
 	text-decoration: underline;
 }
+
+pre {
+	font-family: var(--font-family-monospace);
+}
+
 
 input[type="range"] {
 	appearance: none;

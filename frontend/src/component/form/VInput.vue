@@ -5,6 +5,7 @@ import SpinnerStyle from '@/style/feedback/Spinner.module.css';
 export type InputVariant = 'outlined' | 'contained';
 export type InputSize = 'small' | 'medium' | 'large';
 export interface InputProps {
+	type?: string;
 	variant?: InputVariant;
 	size?: InputSize;
 	invalid?: boolean;
@@ -13,7 +14,7 @@ export interface InputProps {
 	loading?: boolean;
 	fullwidth?: boolean;
 
-	type?: string;
+	wrapperAttrs?: Record<string, unknown>;
 }
 
 withDefaults(defineProps<InputProps>(), {
@@ -34,6 +35,7 @@ withDefaults(defineProps<InputProps>(), {
 		:focused="focused ? '' : null"
 		:fullwidth="fullwidth ? '' : null"
 		:class="[InputStyle.input, InputStyle[variant], InputStyle[size]]"
+		v-bind="wrapperAttrs"
 	>
 		<div :class="SpinnerStyle.arch" v-if="loading" />
 		<slot name="startAdornment" v-else />

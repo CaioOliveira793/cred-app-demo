@@ -1,24 +1,24 @@
 import type { Component } from 'vue';
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 import {
-	APP_CONTENT_ELEMENT_ID,
-	LEFT_SIDEBAR_ELEMENT_ID,
 	AppPath,
-	MAIN_CONTENT_ELEMENT_ID,
+	APP_CONTENT_ELEMENT_ID,
 	TOP_NAVIGATION_ELEMENT_ID,
+	LEFT_SIDEBAR_ELEMENT_ID,
+	MAIN_CONTENT_ELEMENT_ID,
 } from './constant';
 
 const AppLayoutComponent = () => import('@/component/layout/AppLayout.vue');
-const LeftSidebarComponent = () => import('@/component/navigation/SidebarNavigation.vue');
-const TopNavigationComponent = () => import('@/component/navigation/TopNavigation.vue');
+const SideNavBarComponent = () => import('@/component/navigation/SideNavBar.vue');
+const TopAppBarComponent = () => import('@/component/navigation/TopAppBar.vue');
 
 function makeAppLayoutRecord(mainComponent: () => Component, name: string): RouteRecordRaw {
 	return {
 		name: name + 'Layout',
 		path: '',
 		components: {
-			[TOP_NAVIGATION_ELEMENT_ID]: TopNavigationComponent,
-			[LEFT_SIDEBAR_ELEMENT_ID]: LeftSidebarComponent,
+			[TOP_NAVIGATION_ELEMENT_ID]: TopAppBarComponent,
+			[LEFT_SIDEBAR_ELEMENT_ID]: SideNavBarComponent,
 			[MAIN_CONTENT_ELEMENT_ID]: mainComponent,
 		},
 	};

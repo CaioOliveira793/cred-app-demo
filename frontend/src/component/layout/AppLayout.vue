@@ -55,6 +55,7 @@ const layout = reactive({
 	position: fixed;
 	height: v-bind('layout.top_menu_height');
 	width: 100%;
+	z-index: var(--index-layer-2);
 }
 
 .left_sidebar,
@@ -75,6 +76,7 @@ const layout = reactive({
 }
 
 .app_content {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	padding: calc(var(--padding-unit) * 4);
@@ -82,8 +84,8 @@ const layout = reactive({
 	width: calc(100% - v-bind('layout.left_sidebar_width') - v-bind('layout.right_sidebar_width'));
 	min-height: 100%;
 
-	margin-top: v-bind('layout.top_menu_height');
-	margin-left: v-bind('layout.left_sidebar_width');
-	margin-right: v-bind('layout.right_sidebar_width');
+	top: v-bind('layout.top_menu_height');
+	left: v-bind('layout.left_sidebar_width');
+	right: v-bind('layout.right_sidebar_width');
 }
 </style>
