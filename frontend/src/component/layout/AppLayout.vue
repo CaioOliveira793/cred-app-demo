@@ -3,7 +3,6 @@ import { reactive } from 'vue';
 import {
 	TOP_NAVIGATION_ELEMENT_ID,
 	LEFT_SIDEBAR_ELEMENT_ID,
-	RIGHT_SIDEBAR_ELEMENT_ID,
 	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
 import { CSSpx } from '@/function/StyleModule';
@@ -11,7 +10,6 @@ import { CSSpx } from '@/function/StyleModule';
 const layout = reactive({
 	top_menu_height: '0px',
 	left_sidebar_width: '0px',
-	right_sidebar_width: '0px',
 });
 </script>
 
@@ -33,11 +31,6 @@ const layout = reactive({
 		:id="MAIN_CONTENT_ELEMENT_ID"
 		:class="$style.app_content"
 	/>
-	<router-view
-		:name="RIGHT_SIDEBAR_ELEMENT_ID"
-		:id="RIGHT_SIDEBAR_ELEMENT_ID"
-		@change-client-rect-request="layout.right_sidebar_width = CSSpx($event.expected.width)"
-	/>
 </template>
 
 <style>
@@ -58,21 +51,13 @@ const layout = reactive({
 	z-index: var(--index-layer-2);
 }
 
-.left_sidebar,
-.right_sidebar {
+.left_sidebar {
 	position: fixed;
 	overflow-y: auto;
 	width: 100%;
 	height: calc(100% - v-bind('layout.top_menu_height'));
 	top: v-bind('layout.top_menu_height');
-}
-
-.left_sidebar {
 	max-width: v-bind('layout.left_sidebar_width');
-}
-
-.right_sidebar {
-	max-width: v-bind('layout.right_sidebar_width');
 }
 
 .app_content {
@@ -81,11 +66,10 @@ const layout = reactive({
 	flex-direction: column;
 	padding: calc(var(--padding-unit) * 4);
 	gap: calc(var(--padding-unit) * 4);
-	width: calc(100% - v-bind('layout.left_sidebar_width') - v-bind('layout.right_sidebar_width'));
+	width: calc(100% - v-bind('layout.left_sidebar_width'));
 	min-height: 100%;
 
 	top: v-bind('layout.top_menu_height');
 	left: v-bind('layout.left_sidebar_width');
-	right: v-bind('layout.right_sidebar_width');
 }
 </style>

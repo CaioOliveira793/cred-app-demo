@@ -53,9 +53,6 @@ export const TOP_NAVIGATION_ELEMENT_ID = 'top_navigation';
 /** Left sidebar element. */
 export const LEFT_SIDEBAR_ELEMENT_ID = 'left_sidebar';
 
-/** Right sidebar element. */
-export const RIGHT_SIDEBAR_ELEMENT_ID = 'right_sidebar';
-
 // # Page
 
 export const enum AppPath {
