@@ -1,113 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted, type Component } from 'vue';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import ArrowLeftIcon from '~icons/fa6-solid/arrow-left';
+import ArrowRightIcon from '~icons/fa6-solid/arrow-right';
 import NavigationItem from '@/component/navigation/NavigationItem.vue';
 import AppLogo from '@/component/AppLogo.vue';
 import UserProfile from '@/component/user/UserProfile.vue';
 import VButton from '@/component/form/VButton.vue';
-import {
-	ChangeClientRectRequestEvent,
-	type ChangeClientRectRequestEventName,
-} from '@/event/LayoutEvent';
-
-import ArrowLeftIcon from '~icons/fa6-solid/arrow-left';
-import ArrowRightIcon from '~icons/fa6-solid/arrow-right';
-import HouseIcon from '~icons/fa6-solid/house';
-import UserTagIcon from '~icons/fa6-solid/user-tag';
-import ClipboardListIcon from '~icons/fa6-solid/clipboard-list';
-import CommentsIcon from '~icons/fa6-solid/comments';
-import GearIcon from '~icons/fa6-solid/gear';
 import { useUserAccount } from '@/composable/useUserAccount';
-
-interface NavItem {
-	path: string;
-	name: string;
-	icon: Component;
-}
+import { useAppLayout } from '@/composable/useAppLayout';
+import { DownNavigationItems, UpNavigationItems } from './NavItems';
 
 const EXPANDED_WIDTH = 240;
 const CONTAINED_WIDTH = 64;
 
-const UpNavigationItems: NavItem[] = [
-	{
-		name: 'Home',
-		path: '/home',
-		icon: HouseIcon,
-	},
-	{
-		name: 'Clientes',
-		path: '/customer',
-		icon: UserTagIcon,
-	},
-	{
-		name: 'Campanhas',
-		path: '/campaign',
-		icon: ClipboardListIcon,
-	},
-	{
-		name: 'Atendimentos',
-		path: '/customer_service',
-		icon: CommentsIcon,
-	},
-];
-
-const DownNavigationItems: NavItem[] = [
-	{
-		name: 'Configurações',
-		path: '/config',
-		icon: GearIcon,
-	},
-];
-
 const route = useRoute();
+const { setSidebarWidth } = useAppLayout();
 const { user } = useUserAccount();
 
 const expanded = ref(false);
-const sidebarEl = ref<null | HTMLElement>(null);
 
-const emit = defineEmits<{
-	(name: ChangeClientRectRequestEventName, event: ChangeClientRectRequestEvent): void;
-}>();
+setSidebarWidth(expanded.value ? EXPANDED_WIDTH : CONTAINED_WIDTH);
 
-function createExpectedRect(currentRect: DOMRect, expanded: boolean): DOMRect {
-	return expanded
-		? new DOMRect(currentRect.x, currentRect.y, EXPANDED_WIDTH, currentRect.height)
-		: new DOMRect(currentRect.x, currentRect.y, CONTAINED_WIDTH, currentRect.height);
-}
-
-function handleExpand(event: MouseEvent) {
+function handleExpand() {
 	expanded.value = !expanded.value;
-
-	if (sidebarEl.value === null) return;
-
-	const currentRect = sidebarEl.value.getBoundingClientRect();
-	const expectedRect = createExpectedRect(currentRect, expanded.value);
-
-	emit(
-		ChangeClientRectRequestEvent.EVENT_NAME,
-		new ChangeClientRectRequestEvent(currentRect, expectedRect, sidebarEl.value, event)
-	);
+	setSidebarWidth(expanded.value ? EXPANDED_WIDTH : CONTAINED_WIDTH);
 }
-
-onMounted(() => {
-	if (sidebarEl.value === null) return;
-
-	const currentRect = sidebarEl.value.getBoundingClientRect();
-
-	emit(
-		ChangeClientRectRequestEvent.EVENT_NAME,
-		new ChangeClientRectRequestEvent(
-			currentRect,
-			createExpectedRect(currentRect, expanded.value),
-			sidebarEl.value,
-			null
-		)
-	);
-});
 </script>
 
 <template>
-	<aside :class="$style.app_sidebar" :expanded="expanded ? '' : null" ref="sidebarEl">
+	<aside :class="$style.app_sidebar" :expanded="expanded ? '' : null">
 		<div :class="$style.nav_header">
 			<AppLogo :landscape="expanded" :class="$style.logo" />
 			<VButton

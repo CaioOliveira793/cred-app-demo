@@ -1,52 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import {
-	type ChangeClientRectRequestEventName,
-	ChangeClientRectRequestEvent,
-} from '@/event/LayoutEvent';
-import { useUserAccount } from '@/composable/useUserAccount';
 import MagnifyingGlassIcon from '~icons/fa6-solid/magnifying-glass';
 import BarsIcon from '~icons/fa6-solid/bars';
 import BellIcon from '~icons/fa6-solid/bell';
 import VInput from '@/component/form/VInput.vue';
 import VButton from '@/component/form/VButton.vue';
 import UserProfile from '@/component/user/UserProfile.vue';
+import { useAppLayout } from '@/composable/useAppLayout';
+import { useUserAccount } from '@/composable/useUserAccount';
 
 const TOP_BAR_HEIGHT = 48;
 
-const topNavEl = ref<null | HTMLElement>(null);
-
+const { toggleSidebarVisibility, setAppBarHeight } = useAppLayout();
 const { user } = useUserAccount();
 
-const emit = defineEmits<{
-	(name: ChangeClientRectRequestEventName, event: ChangeClientRectRequestEvent): void;
-}>();
-
-function createExpectedRect(currentRect: DOMRect): DOMRect {
-	return new DOMRect(currentRect.x, currentRect.y, currentRect.width, TOP_BAR_HEIGHT);
-}
-
-onMounted(() => {
-	if (topNavEl.value === null) return;
-
-	const currentRect = topNavEl.value.getBoundingClientRect();
-
-	emit(
-		ChangeClientRectRequestEvent.EVENT_NAME,
-		new ChangeClientRectRequestEvent(
-			currentRect,
-			createExpectedRect(currentRect),
-			topNavEl.value,
-			null
-		)
-	);
-});
+setAppBarHeight(TOP_BAR_HEIGHT);
 </script>
 
 <template>
-	<div :class="$style.container" ref="topNavEl">
+	<div :class="$style.container">
 		<div :class="$style.search_container">
-			<VButton variant="icon_flat" color="current" size="medium">
+			<VButton variant="icon_flat" color="current" size="medium" @click="toggleSidebarVisibility">
 				<BarsIcon />
 			</VButton>
 
