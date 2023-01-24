@@ -1,47 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import ArrowLeftIcon from '~icons/fa6-solid/arrow-left';
-import ArrowRightIcon from '~icons/fa6-solid/arrow-right';
 import NavigationItem from '@/component/navigation/NavigationItem.vue';
 import AppLogo from '@/component/AppLogo.vue';
 import UserProfile from '@/component/user/UserProfile.vue';
-import VButton from '@/component/form/VButton.vue';
 import { useUserAccount } from '@/composable/useUserAccount';
-import { useAppLayout } from '@/composable/useAppLayout';
 import { DownNavigationItems, UpNavigationItems } from './NavItems';
 
-const EXPANDED_WIDTH = 240;
-const CONTAINED_WIDTH = 64;
+interface SideNavBarProps {
+	expanded: boolean;
+}
 
 const route = useRoute();
-const { setSidebarWidth } = useAppLayout();
 const { user } = useUserAccount();
 
-const expanded = ref(false);
-
-setSidebarWidth(expanded.value ? EXPANDED_WIDTH : CONTAINED_WIDTH);
-
-function handleExpand() {
-	expanded.value = !expanded.value;
-	setSidebarWidth(expanded.value ? EXPANDED_WIDTH : CONTAINED_WIDTH);
-}
+withDefaults(defineProps<SideNavBarProps>(), {
+	expanded: false,
+});
 </script>
 
 <template>
 	<aside :class="$style.app_sidebar" :expanded="expanded ? '' : null">
 		<div :class="$style.nav_header">
 			<AppLogo :landscape="expanded" :class="$style.logo" />
-			<VButton
-				variant="icon_flat"
-				size="medium"
-				aria-label="left-sidebar-menu"
-				:class="{ [$style.expanded_button]: expanded }"
-				@click="handleExpand"
-			>
-				<ArrowLeftIcon v-if="expanded" />
-				<ArrowRightIcon v-if="!expanded" />
-			</VButton>
 		</div>
 		<hr />
 		<nav :class="$style.navigation">
@@ -83,8 +63,6 @@ function handleExpand() {
 
 <style module>
 .app_sidebar {
-	display: flex;
-	flex-flow: column nowrap;
 	justify-content: space-between;
 	align-items: center;
 	padding: calc(var(--padding-unit) * 2);
@@ -108,10 +86,6 @@ function handleExpand() {
 
 .logo {
 	align-self: flex-start;
-}
-
-.expanded_button {
-	align-self: flex-end;
 }
 
 .navigation {

@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import {
 	TOP_NAVIGATION_ELEMENT_ID,
 	LEFT_SIDEBAR_ELEMENT_ID,
 	MAIN_CONTENT_ELEMENT_ID,
 } from '@/config/constant';
-import { CSSpx } from '@/function/StyleModule';
-import { useAppLayout } from '@/composable/useAppLayout';
+import TopAppBar from '@/component/navigation/TopAppBar.vue';
+import SideNavBar from '@/component/navigation/SideNavBar.vue';
 
-const { layout, visibleSidebarWidth } = useAppLayout();
+const sidebarVisibility = ref<boolean>(false);
 </script>
 
 <script lang="ts">
@@ -17,22 +18,22 @@ export default {
 </script>
 
 <template>
-	<router-view
-		:name="TOP_NAVIGATION_ELEMENT_ID"
+	<TopAppBar
 		:id="TOP_NAVIGATION_ELEMENT_ID"
 		:class="$style.top_navigation"
+		@toggle-sidebar="sidebarVisibility = !sidebarVisibility"
 	/>
-	<router-view
-		:name="LEFT_SIDEBAR_ELEMENT_ID"
+	<SideNavBar
 		:id="LEFT_SIDEBAR_ELEMENT_ID"
 		:class="$style.left_sidebar"
-		v-show="layout.sidebarVisible"
+		:expanded="sidebarVisibility"
 	/>
 	<router-view
 		:name="MAIN_CONTENT_ELEMENT_ID"
 		:id="MAIN_CONTENT_ELEMENT_ID"
 		:class="$style.app_content"
 		v-bind="$attrs"
+		:expanded="sidebarVisibility ? '' : null"
 	/>
 </template>
 
@@ -43,35 +44,78 @@ export default {
 	justify-content: flex-start;
 	align-items: stretch;
 	min-height: 100vh;
+
+	--sidebar-expanded-width: 240px;
+	--sidebar-contained-width: 64px;
+	--top-bar-height: 48px;
 }
 </style>
 
 <style module>
 .top_navigation {
 	position: fixed;
-	height: v-bind('CSSpx(layout.appBarHeight)');
 	width: 100%;
+	height: var(--top-bar-height);
 	z-index: var(--index-layer-2);
 }
 
 .left_sidebar {
 	position: fixed;
+	display: flex;
+	flex-flow: column nowrap;
 	overflow-y: auto;
-	width: v-bind('CSSpx(visibleSidebarWidth())');
-	height: calc(100% - v-bind('CSSpx(layout.appBarHeight)'));
-	top: v-bind('CSSpx(layout.appBarHeight)');
+	width: var(--sidebar-contained-width);
+	height: calc(100% - var(--top-bar-height));
+	z-index: var(--index-layer-2);
+
+	top: var(--top-bar-height);
+}
+.left_sidebar[expanded] {
+	width: var(--sidebar-expanded-width);
 }
 
 .app_content {
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-flow: column nowrap;
 	padding: calc(var(--padding-unit) * 4);
 	gap: calc(var(--padding-unit) * 4);
-	width: calc(100% - v-bind('CSSpx(visibleSidebarWidth())'));
+	width: calc(100% - var(--sidebar-contained-width));
 	min-height: 100%;
 
-	top: v-bind('CSSpx(layout.appBarHeight)');
-	left: v-bind('CSSpx(visibleSidebarWidth())');
+	top: var(--top-bar-height);
+	left: var(--sidebar-contained-width);
+}
+.app_content[expanded] {
+	width: calc(100% - var(--sidebar-expanded-width));
+	left: var(--sidebar-expanded-width);
+}
+
+@media screen and (640px > width) {
+	.app_content[expanded] {
+		left: var(--sidebar-contained-width);
+		width: calc(100% - var(--sidebar-contained-width));
+	}
+}
+
+@media screen and (400px > width) {
+	.app_content {
+		left: 0px;
+		width: 100%;
+	}
+
+	.app_content[expanded] {
+		left: 0px;
+		width: 100%;
+	}
+
+	.left_sidebar {
+		display: none;
+	}
+
+	.left_sidebar[expanded] {
+		display: flex;
+		width: 100vw;
+	}
 }
 </style>

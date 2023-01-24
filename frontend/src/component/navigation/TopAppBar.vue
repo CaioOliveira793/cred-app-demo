@@ -5,21 +5,19 @@ import BellIcon from '~icons/fa6-solid/bell';
 import VInput from '@/component/form/VInput.vue';
 import VButton from '@/component/form/VButton.vue';
 import UserProfile from '@/component/user/UserProfile.vue';
-import { useAppLayout } from '@/composable/useAppLayout';
 import { useUserAccount } from '@/composable/useUserAccount';
 
-const TOP_BAR_HEIGHT = 48;
-
-const { toggleSidebarVisibility, setAppBarHeight } = useAppLayout();
 const { user } = useUserAccount();
 
-setAppBarHeight(TOP_BAR_HEIGHT);
+const emit = defineEmits<{
+	(e: 'toggleSidebar'): void;
+}>();
 </script>
 
 <template>
 	<div :class="$style.container">
 		<div :class="$style.search_container">
-			<VButton variant="icon_flat" color="current" size="medium" @click="toggleSidebarVisibility">
+			<VButton variant="icon_flat" color="current" size="medium" @click="emit('toggleSidebar')">
 				<BarsIcon />
 			</VButton>
 
