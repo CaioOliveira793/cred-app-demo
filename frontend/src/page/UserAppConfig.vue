@@ -1,25 +1,13 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import RangeInput from '@/component/form/RangeInput.vue';
 import VButton from '@/component/form/VButton.vue';
 import NativeSelect, { type NativeSelectOption } from '@/component/form/NativeSelect.vue';
-import RotateLeft from '~icons/fa6-solid/rotate-left';
-
 import { COLOR_SCHEME_LIST } from '@/config/constant';
-import { useColorScheme } from '@/composable/useColorScheme';
-import { useThemeColor } from '@/composable/useThemeColor';
-import { DateTimeFormatter } from '@/formatter/DateTimeFormatter';
-import {
-	persistColorScheme,
-	persistThemeColor,
-	CSShsl,
-	persistedColorScheme,
-	persistedThemeColor,
-	copyHSL,
-	compareHSL,
-} from '@/function/StyleModule';
+import { useAppColorScheme } from '@/composable/useAppColorScheme';
 import { useUserAccount } from '@/composable/useUserAccount';
 import { usePrivatePage } from '@/composable/useAppAccess';
+import { DateTimeFormatter } from '@/formatter/DateTimeFormatter';
+import { CSShsl } from '@/function/StyleModule';
 
 const THEME_OPTION_LIST: NativeSelectOption[] = COLOR_SCHEME_LIST.map(theme => ({
 	label: theme,
@@ -29,31 +17,7 @@ const THEME_OPTION_LIST: NativeSelectOption[] = COLOR_SCHEME_LIST.map(theme => (
 const { user } = useUserAccount();
 usePrivatePage();
 
-const colorScheme = useColorScheme();
-const { themeColor, mixedThemeColor } = useThemeColor();
-
-const themePersisted = ref(true);
-
-watch([colorScheme, themeColor], () => {
-	const persistedColor = persistedThemeColor();
-	const persisted =
-		colorScheme.value === persistedColorScheme() && persistedColor
-			? compareHSL(themeColor, persistedColor)
-			: false;
-
-	themePersisted.value = persisted;
-});
-
-function saveTheme() {
-	persistColorScheme(colorScheme.value);
-	persistThemeColor(themeColor);
-	themePersisted.value = true;
-}
-
-function resetTheme() {
-	colorScheme.value = persistedColorScheme() ?? colorScheme.value;
-	copyHSL(themeColor, persistedThemeColor() ?? themeColor);
-}
+const appColor = useAppColorScheme();
 </script>
 
 <template>
@@ -97,11 +61,14 @@ function resetTheme() {
 						:min="0"
 						:max="256"
 						:step="1"
-						v-model="themeColor.hue"
+						v-model="appColor.themeColor.hue"
 					>
 						<template #description>Hue da cor principal</template>
 					</RangeInput>
-					<div :class="$style.color_box" :style="{ backgroundColor: CSShsl(mixedThemeColor) }" />
+					<div
+						:class="$style.color_box"
+						:style="{ backgroundColor: CSShsl(appColor.mixedThemeColor) }"
+					/>
 				</div>
 				<NativeSelect
 					label="Esquema de cores"
@@ -109,7 +76,7 @@ function resetTheme() {
 					name="color_scheme"
 					fullwidth
 					:options="THEME_OPTION_LIST"
-					v-model="colorScheme"
+					v-model="appColor.colorScheme"
 				>
 					<template #description>Tema da aplicação</template>
 					<template #option="{ options }">
@@ -123,19 +90,6 @@ function resetTheme() {
 						</option>
 					</template>
 				</NativeSelect>
-				<div :class="$style.action_container">
-					<VButton
-						variant="icon_contained"
-						color="success"
-						:disabled="themePersisted"
-						@click="resetTheme"
-					>
-						<RotateLeft />
-					</VButton>
-					<VButton variant="contained" color="success" :disabled="themePersisted" @click="saveTheme"
-						>Salvar
-					</VButton>
-				</div>
 			</div>
 		</section>
 	</main>
