@@ -17,6 +17,7 @@ interface RangeInputProps {
 
 	size?: 'small' | 'medium' | 'large';
 	color?: 'primary' | 'info' | 'success' | 'warning' | 'error';
+	fullwidth?: boolean;
 }
 
 // TODO: add color
@@ -25,12 +26,13 @@ interface RangeInputProps {
 
 defineEmits(['update:modelValue']);
 
-withDefaults(defineProps<RangeInputProps>(), {
-	id: nanoid(),
+const props = withDefaults(defineProps<RangeInputProps>(), {
 	size: 'medium',
 	color: 'primary',
 	required: false,
 });
+
+const theID = props.id ?? nanoid();
 
 function transformInput(event: Event): number {
 	const target = event.target as HTMLInputElement | null;
@@ -39,8 +41,8 @@ function transformInput(event: Event): number {
 </script>
 
 <template>
-	<div :class="[InputStyle.wrapper, $attrs.class]">
-		<InputLabel :for="id" v-if="label" :label="label" :asterisk="asterisk || required" />
+	<div :class="[InputStyle.wrapper, $attrs.class]" :fullwidth="fullwidth ? '' : null">
+		<InputLabel :for="theID" v-if="label" :label="label" :asterisk="asterisk || required" />
 		<p v-if="$slots.description" :class="TypographyStyle.helper_text">
 			<slot name="description" />
 		</p>
@@ -49,11 +51,12 @@ function transformInput(event: Event): number {
 			:class="$style.range_input"
 			:style-size="size"
 			:style-color="size"
-			:id="id"
+			:id="theID"
 			:min="min"
 			:max="max"
 			:step="step"
 			:required="required"
+			:fullwidth="fullwidth ? '' : null"
 			:value="modelValue"
 			@input="$emit('update:modelValue', transformInput($event))"
 			v-bind="$attrs"

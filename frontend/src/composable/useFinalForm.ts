@@ -77,26 +77,26 @@ export function useForm<Data extends object, ValidationError extends object = {}
 	return formApi;
 }
 
-export interface FieldPropBindind {
+export interface FieldPropBind {
 	checked?: boolean;
 	value?: string;
 	invalid: boolean;
 	name: string;
 }
 
-export interface FieldEventBinding {
+export interface FieldEventBind {
 	blur(): void;
 	input(ev: Event): void;
 	focus(): void;
 }
 
-export interface FieldBindind {
-	event?: FieldEventBinding;
-	prop?: FieldPropBindind;
+export interface FieldBind {
+	event?: FieldEventBind;
+	prop?: FieldPropBind;
 	errors: string[];
 }
 
-export function emptyFieldBindind(): FieldBindind {
+export function emptyFieldBindind(): FieldBind {
 	return {
 		event: undefined,
 		prop: undefined,
@@ -107,7 +107,7 @@ export function emptyFieldBindind(): FieldBindind {
 export function fieldBinding<Input extends InputData, FieldValue extends CoercedInputData>(
 	state: FieldState<FieldValue>,
 	transformer: InputTransform<Input, FieldValue>
-): FieldBindind {
+): FieldBind {
 	function handleInput(ev: Event): void {
 		const target = ev.target as HTMLInputElement;
 		state.change(transformer.from(target));
@@ -115,13 +115,13 @@ export function fieldBinding<Input extends InputData, FieldValue extends Coerced
 
 	const inputValue = transformer.into(state.value);
 
-	const event: FieldEventBinding = {
+	const event: FieldEventBind = {
 		blur: state.blur,
 		input: handleInput,
 		focus: state.focus,
 	};
 
-	const prop: FieldPropBindind = {
+	const prop: FieldPropBind = {
 		invalid: state.touched && state.invalid ? true : false,
 		name: state.name,
 	};
@@ -165,7 +165,7 @@ export interface UseFieldBinding<
  * @param param Field bindind input.
  * @returns Reactive binding object.
  */
-export function useFieldBinding<
+export function useFieldBind<
 	Data extends object,
 	Field extends keyof Data,
 	Input extends InputData,
@@ -175,8 +175,8 @@ export function useFieldBinding<
 	formApi,
 	transformer,
 	fieldConfig,
-}: UseFieldBinding<Data, Field, Input, FieldValue>): FieldBindind {
-	const binding = reactive<FieldBindind>(emptyFieldBindind());
+}: UseFieldBinding<Data, Field, Input, FieldValue>): FieldBind {
+	const binding = reactive<FieldBind>(emptyFieldBindind());
 
 	const unregister = formApi.registerField(
 		name,

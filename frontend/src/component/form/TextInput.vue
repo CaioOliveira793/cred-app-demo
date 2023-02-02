@@ -1,16 +1,11 @@
 <script setup lang="ts">
+import { nanoid } from 'nanoid';
 import InputStyle from '@/style/form/Input.module.css';
 import TypographyStyle from '@/style/Typography.module.css';
 import InputLabel from '@/component/form/InputLabel.vue';
-import { nanoid } from 'nanoid';
-import type { InputSize, InputVariant } from './VInput.vue';
+import VInput, { type InputSize, type InputVariant } from '@/component/form/VInput.vue';
 
-export interface NativeSelectOption {
-	label: string;
-	value: string;
-}
-
-export interface NativeSelectProps {
+export interface TextInputProps {
 	id?: string;
 
 	// InputLabelProps
@@ -18,59 +13,59 @@ export interface NativeSelectProps {
 	asterisk?: boolean;
 
 	// InputProps
+	type?: string;
 	variant?: InputVariant;
 	size?: InputSize;
 	invalid?: boolean;
 	focused?: boolean;
 	disabled?: boolean;
+	loading?: boolean;
 	fullwidth?: boolean;
+	required?: boolean;
 
 	modelValue?: string;
-	options: NativeSelectOption[];
 }
 
 defineEmits<{
 	(e: 'update:modelValue', value: string): void;
 }>();
 
-const props = withDefaults(defineProps<NativeSelectProps>(), {
+const props = withDefaults(defineProps<TextInputProps>(), {
 	variant: 'contained',
 	size: 'medium',
-	invalid: false,
+	focused: false,
 	disabled: false,
+	invalid: false,
 });
 
 const theID = props.id ?? nanoid();
-
-function selectInput(event: Event): string | null {
-	const target = event.target as HTMLSelectElement | null;
-	return target?.value ?? null;
-}
 </script>
 
 <template>
 	<div :class="[InputStyle.wrapper, $attrs.class]" :fullwidth="fullwidth ? '' : null">
-		<InputLabel :for="theID" v-if="label" :label="label" :asterisk="asterisk" />
+		<InputLabel :for="theID" v-if="label" :label="label" :asterisk="asterisk || required" />
 		<p v-if="$slots.description" :class="TypographyStyle.helper_text">
 			<slot name="description" />
 		</p>
-		<select
+		<VInput
 			:id="theID"
-			:invalid="invalid || Boolean($slots.errorMessage) ? '' : null"
+			:type="type"
+			:variant="variant"
+			:size="size"
+			:focused="focused"
 			:disabled="disabled"
-			:focused="focused ? '' : null"
-			:fullwidth="fullwidth ? '' : null"
-			:class="[InputStyle.input, InputStyle[variant], InputStyle[size], $style.select]"
+			:required="required"
+			:loading="loading"
+			:fullwidth="fullwidth"
+			:invalid="invalid"
 			:value="modelValue"
-			@input="$emit('update:modelValue', selectInput($event))"
+			@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
 			v-bind="$attrs"
 		>
-			<slot name="option" :options="options">
-				<option v-for="option in options" :key="option.value" :value="option.value">
-					{{ option.label }}
-				</option>
-			</slot>
-		</select>
+			<template v-for="(_, slot) of $slots" v-slot:[slot]="scope">
+				<slot :name="slot" v-bind="scope" />
+			</template>
+		</VInput>
 		<p v-if="$slots.helperText" :class="TypographyStyle.helper_text">
 			<slot name="helperText" />
 		</p>
@@ -80,9 +75,8 @@ function selectInput(event: Event): string | null {
 	</div>
 </template>
 
-<!-- TODO: fix native select size -->
-<style module>
-.select {
-	padding: var(--padding-unit);
-}
-</style>
+<script lang="ts">
+export default {
+	inheritAttrs: false,
+};
+</script>

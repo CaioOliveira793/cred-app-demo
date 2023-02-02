@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import TypographyStyle from '@/style/Typography.module.css';
 
-export interface InputLabel {
+export interface InputLabelProps {
 	label?: string;
 	asterisk?: boolean;
 }
 
-defineProps<InputLabel>();
+defineProps<InputLabelProps>();
 </script>
 
 <template>

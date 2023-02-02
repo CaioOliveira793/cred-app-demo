@@ -2,6 +2,8 @@
 import InputStyle from '@/style/form/Input.module.css';
 import SpinnerStyle from '@/style/feedback/Spinner.module.css';
 
+// TODO: add `standard` input variant.
+// See [Material UI TextField](https://mui.com/material-ui/react-text-field/)
 export type InputVariant = 'outlined' | 'contained';
 export type InputSize = 'small' | 'medium' | 'large';
 export interface InputProps {
