@@ -36,6 +36,6 @@ strong.logo_text {
 }
 
 .logo_text {
-	composes: subtitle2 from '@/style/Typography.module.css';
+	composes: subtitle from '@/style/Typography.module.css';
 }
 </style>

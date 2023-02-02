@@ -96,10 +96,13 @@ svg {
 }
 
 body, #app {
-	color: var(--text-color-1);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-regular);
 	font-size: calc(var(--font-size) * 0.875);
+	line-height: calc(var(--line-height) * 1.1);
+	letter-spacing: var(--letter-spacing-tight);
+
 	min-height: 100vh;
 	background-color: var(--surface-color-1);
+	color: var(--text-color-1);
 }

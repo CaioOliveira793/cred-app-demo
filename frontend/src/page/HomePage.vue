@@ -1,12 +1,11 @@
 <template>
 	<main>
-		<div>Home</div>
 		<div :class="$style.today_metric">
-			<h2>Métricas de hoje</h2>
+			<h2 :class="$style.heading3">Métricas de hoje</h2>
 			<section>
 				<div :class="$style.card_metric_container">
-					<h6 :class="$style.card_metric_title">Atendimentos</h6>
-					<ul :class="$style.card_metric_list">
+					<h6 :class="[$style.card_metric_title, $style.subtitle]">Atendimentos</h6>
+					<ul>
 						<li>Sem interesse</li>
 						<li>Com interesse</li>
 						<li>Simulação iniciada</li>
@@ -19,6 +18,8 @@
 </template>
 
 <style module>
+@import '@/style/Typography.module.css';
+
 .today_metric {
 	display: flex;
 	flex-flow: column nowrap;
@@ -40,10 +41,5 @@
 
 .card_metric_title {
 	font-weight: var(--font-weight-bold);
-	composes: subtitle2 from '@/style/Typography.module.css';
-}
-
-.card_metric_list {
-	composes: body2 from '@/style/Typography.module.css';
 }
 </style>
