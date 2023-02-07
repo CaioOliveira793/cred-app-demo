@@ -5,23 +5,21 @@ import {
 	type FieldState,
 	type FormApi,
 	type FormSubscription,
-	type SubmissionErrors,
 } from 'final-form';
 import { onUnmounted, reactive } from 'vue';
 import type { InputData, CoercedInputData, InputTransform } from '@/composable/InputTransform';
 
-export type FinalSubmit<Data> = (
+export type FinalSubmit<Data, ValidationError> = (
 	values: Data,
-	form: FormApi<Data, Partial<Data>>,
-	callback?: (errors?: SubmissionErrors) => void
-) => Promise<void>;
+	form: FormApi<Data, Partial<Data>>
+) => Promise<void | ValidationError>;
 
 export type FinalValidate<Data extends object, ValidationError> = (
 	values: Data
 ) => Promise<ValidationError | void>;
 
 export interface UseFormInput<Data extends object, ValidationError extends object> {
-	submit: FinalSubmit<Data>;
+	submit: FinalSubmit<Data, ValidationError>;
 
 	validate?: FinalValidate<Data, ValidationError>;
 
@@ -141,10 +139,10 @@ export function fieldBinding<Input extends InputData, FieldValue extends Coerced
 }
 
 export interface UseFieldBinding<
-	Data extends object,
+	in out Data extends object,
 	Field extends keyof Data,
-	Input extends InputData,
-	FieldValue extends Data[Field] & CoercedInputData
+	out Input extends InputData,
+	in out FieldValue extends Data[Field] & CoercedInputData
 > {
 	/** Field name */
 	name: Field;
@@ -181,7 +179,10 @@ export function useFieldBind<
 	const unregister = formApi.registerField(
 		name,
 		state => {
-			const { event, prop, errors } = fieldBinding(state as FieldState<FieldValue>, transformer);
+			const { event, prop, errors } = fieldBinding<Input, FieldValue>(
+				state as unknown as FieldState<FieldValue>,
+				transformer
+			);
 			binding.event = event;
 			binding.prop = prop;
 			binding.errors = errors;

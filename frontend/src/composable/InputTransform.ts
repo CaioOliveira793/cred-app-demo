@@ -4,7 +4,10 @@ export type InputData = boolean | string;
 /**
  * Input value transformer.
  */
-export interface InputTransform<Input extends InputData, Output extends CoercedInputData> {
+export interface InputTransform<
+	out Input extends InputData,
+	in out Output extends CoercedInputData
+> {
 	from(input: Readonly<HTMLInputElement>): Output;
 	into(coerced?: Output): Input;
 }

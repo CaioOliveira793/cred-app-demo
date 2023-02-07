@@ -8,6 +8,7 @@ import ErrorMessageList from '@/component/form/ErrorMessageList.vue';
 import { useFieldBind } from '@/composable/useFinalForm';
 import { TextInputTransform } from '@/composable/InputTransform';
 import type { CustomerQueryParams } from '@/resource/Customer';
+import SearchControl from '../search/SearchControl.vue';
 
 export interface CustomerSearchProps {
 	formApi: FormApi<CustomerQueryParams>;
@@ -48,12 +49,7 @@ const name = useFieldBind({
 			</VButton>
 		</div>
 
-		<div :class="$style.search_button_container">
-			<VButton type="reset" variant="outlined" color="warning" @click="formApi.reset">
-				Limpar
-			</VButton>
-			<VButton type="submit" variant="contained" color="success">Buscar</VButton>
-		</div>
+		<SearchControl @reset="formApi.reset" />
 	</form>
 </template>
 
