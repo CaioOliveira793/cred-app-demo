@@ -22,3 +22,14 @@ export type ZodFormValidator<T> = (data: T) => Promise<ZodFieldError<T>>;
 export function zodFormAdapter<T, Schema extends ZodType<T>>(schema: Schema): ZodFormValidator<T> {
 	return (data: T) => zodFormValidation(schema, data);
 }
+
+export const PrimitiveValidationConfig = Object.freeze({
+	invalid_type_error: 'entrada invalido',
+	required_error: 'entrada obrigatório',
+	description: 'Field validation',
+});
+
+export const DateValidationConfig = Object.freeze({
+	...PrimitiveValidationConfig,
+	coerce: false,
+});

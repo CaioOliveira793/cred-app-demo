@@ -59,6 +59,7 @@ export const enum AppPath {
 	Login = '/login',
 	Home = '/home',
 	Config = '/config',
+	Customer = '/customer',
 }
 
 // # API

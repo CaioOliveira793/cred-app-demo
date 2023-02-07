@@ -39,6 +39,14 @@ export const routes: readonly RouteRecordRaw[] = [
 		children: [makeAppLayoutRecord(() => import('@/page/HomePage.vue'), 'Home')],
 	},
 	{
+		path: AppPath.Customer,
+		name: 'Customer',
+		components: {
+			[APP_CONTENT_ELEMENT_ID]: AppLayoutComponent,
+		},
+		children: [makeAppLayoutRecord(() => import('@/page/CustomerPage.vue'), 'Customer')],
+	},
+	{
 		path: '/:catch_all(.*)',
 		name: 'NotFount',
 		components: {

@@ -1,10 +1,5 @@
 import { z } from 'zod';
-
-const PrimitiveValidationConfig = {
-	invalid_type_error: 'campo invalido',
-	required_error: 'campo obrigatório',
-	description: 'Field validation',
-};
+import { PrimitiveValidationConfig } from './ZodHelper';
 
 const EmailSchema = z.string(PrimitiveValidationConfig).email({ message: 'e-mail inválido' });
 

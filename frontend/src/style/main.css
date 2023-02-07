@@ -29,13 +29,13 @@ ul, ol {
   background: var(--surface-color-4);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--brand-color);
+  background-color: var(--disable-brand-color);
 	border-radius: var(--full-border-radius);
 }
 
 * {
 	scrollbar-width: calc(var(--spacing-unit) * .5);
-  scrollbar-color: var(--brand-color) var(--surface-color-4);
+  scrollbar-color: var(--disable-brand-color) var(--surface-color-4);
 	scroll-behavior: smooth;
 }
 
