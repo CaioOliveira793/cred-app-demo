@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import ErrorMessageList from '@/component/form/ErrorMessageList.vue';
 import TextInput from '@/component/form/TextInput.vue';
 import VButton from '@/component/form/VButton.vue';
 import { TextInputTransform } from '@/composable/InputTransform';
@@ -50,25 +49,19 @@ function signInNavigation() {
 				inputmode="email"
 				required
 				fullwidth
+				:errors="email.errors"
 				v-bind="email.prop"
 				v-on="email.event"
-			>
-				<template #errorMessage>
-					<ErrorMessageList :errors="email.errors" />
-				</template>
-			</TextInput>
+			/>
 			<TextInput
 				label="Senha"
 				type="password"
 				required
 				fullwidth
+				:errors="password.errors"
 				v-bind="password.prop"
 				v-on="password.event"
-			>
-				<template #errorMessage>
-					<ErrorMessageList :errors="password.errors" />
-				</template>
-			</TextInput>
+			/>
 			<VButton variant="contained" color="primary" size="medium" type="submit">Login</VButton>
 		</form>
 	</main>

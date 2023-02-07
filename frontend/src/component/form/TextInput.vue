@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import InputStyle from '@/style/form/Input.module.css';
 import TypographyStyle from '@/style/Typography.module.css';
 import InputLabel from '@/component/form/InputLabel.vue';
+import ErrorMessageList from '@/component/form/ErrorMessageList.vue';
 import VInput, { type InputSize, type InputVariant } from '@/component/form/VInput.vue';
 
 export interface TextInputProps {
@@ -17,6 +18,7 @@ export interface TextInputProps {
 	variant?: InputVariant;
 	size?: InputSize;
 	invalid?: boolean;
+	errors?: string[];
 	focused?: boolean;
 	disabled?: boolean;
 	loading?: boolean;
@@ -69,9 +71,7 @@ const theID = props.id ?? nanoid();
 		<p v-if="$slots.helperText" :class="TypographyStyle.helper_text">
 			<slot name="helperText" />
 		</p>
-		<p v-if="$slots.errorMessage" role="alert" :class="TypographyStyle.error_message">
-			<slot name="errorMessage" />
-		</p>
+		<ErrorMessageList :errors="errors" role="alert" :class="TypographyStyle.error_message" />
 	</div>
 </template>
 

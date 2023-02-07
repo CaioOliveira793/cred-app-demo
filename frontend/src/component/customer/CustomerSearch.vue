@@ -4,7 +4,6 @@ import MagnifyingGlassIcon from '~icons/fa6-solid/magnifying-glass';
 import PlusIcon from '~icons/fa6-solid/plus';
 import TextInput from '@/component/form/TextInput.vue';
 import VButton from '@/component/form/VButton.vue';
-import ErrorMessageList from '@/component/form/ErrorMessageList.vue';
 import { useFieldBind } from '@/composable/useFinalForm';
 import { TextInputTransform } from '@/composable/InputTransform';
 import type { CustomerQueryParams } from '@/resource/Customer';
@@ -31,14 +30,12 @@ const name = useFieldBind({
 				type="text"
 				variant="outlined"
 				fullwidth
+				:errors="name.errors"
 				v-bind="name.prop"
 				v-on="name.event"
 			>
 				<template #startAdornment>
 					<MagnifyingGlassIcon />
-				</template>
-				<template #errorMessage>
-					<ErrorMessageList :errors="name.errors" />
 				</template>
 			</TextInput>
 			<VButton type="button" variant="outlined" color="info">
