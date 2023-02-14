@@ -48,6 +48,12 @@ function selectInput(event: Event): string | null {
 }
 </script>
 
+<script lang="ts">
+export default {
+	inheritAttrs: false,
+};
+</script>
+
 <template>
 	<div :class="[InputStyle.wrapper, $attrs.class]" :fullwidth="fullwidth ? '' : null">
 		<InputLabel :for="theID" v-if="label" :label="label" :asterisk="asterisk" />

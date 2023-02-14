@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ShortDateFormatter } from '@/formatter/DateTimeFormatter';
 import type { Customer, CustomerConvenio } from '@/resource/Customer';
 
 interface CustomerItem {
@@ -7,10 +8,6 @@ interface CustomerItem {
 }
 
 defineProps<CustomerItem>();
-
-const DateFormatter = new Intl.DateTimeFormat('pt-BR', {
-	dateStyle: 'short',
-});
 
 // move to formatter/other.ts
 function notAvailable<T>(value: T | null): T | string {
@@ -33,7 +30,7 @@ function notAvailable<T>(value: T | null): T | string {
 			</div>
 
 			<div :class="$style.info_block">
-				<p>Nascimento: {{ DateFormatter.format(customer.birthdate) }}</p>
+				<p>Nascimento: {{ ShortDateFormatter.format(customer.birthdate) }}</p>
 			</div>
 
 			<div :class="$style.info_block">
@@ -80,6 +77,7 @@ function notAvailable<T>(value: T | null): T | string {
 	padding: calc(var(--padding-unit) * 2);
 	border-radius: var(--border-radius-unit);
 	background-color: var(--surface-color-2);
+	width: 100%;
 }
 
 .customer_info_container {
